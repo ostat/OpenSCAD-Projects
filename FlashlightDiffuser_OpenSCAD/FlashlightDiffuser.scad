@@ -1,15 +1,19 @@
 // flashlight diffuser
-// version 2023-02-19
+// version 2023-02-20
 
 /* [flashlight] */
-TorchDiameter = 15; //0.01
-//Section of diffuser that fits on the torch
+Measurement = "inner";// [inner: Inner Diffuser - Fit over Flashlight, outer: Outer Diffuder - Fit into Flashlight]
+
+//Diameter flashlight at the top, 
+TorchDiameterTop = 15; //0.01
+
+//Diameter flashlight at the base of the overlap (mm), default is TorchDiameterTop
+TorchDiameterLower = 0; //0.01
+//Section of diffuser that fits on the torch (mm)
 TorchOverlap= 0; //0.01
-//taper on the torch overlap, helps get a good fit. mm along the overlap.
-TorchTaper= 0; //0.01
 
 /* [Diffuser] */
-DiffuserStyle = "ShortRound"; // [ShortRound: Short Rounded, ShortFlat: Short Flat, WandRound: Wand Rounded, WandFlat: Wand flat, Globe: Light globe Shaped, GlobeFlat: Flat Light globe Shaped, WandThinRound: Thin Rounded Wand, WandThinFlat: Thin Flat Wand,custom: Custom settings, TestFit: Minimal print for fit test]
+DiffuserStyle = "ShortRound"; // [ShortRound: Short Rounded, ShortFlat: Short Flat, WandShortRound: Wand Short Rounded, WandShortFlat: Wand Short Flat, WandLongRound: Wand Long Rounded, WandLongFlat: Wand Long Flat, Globe: Light globe Shaped, GlobeFlat: Flat Light globe Shaped, WandThinRound: Thin Rounded Wand, WandThinFlat: Thin Flat Wand,custom: Custom settings, TestFit: Minimal print for fit test]
 
 //Thickness of the funnel walls
 WallThickness = 1.5; // 0.1
@@ -38,53 +42,52 @@ $fn=120;
 
 module end_of_customizer_opts() {}
 
-diffuserEndDiameter = (DiffuserStyle == "ShortRound" || DiffuserStyle == "ShortFlat") ? TorchDiameter *1.25
-                    : (DiffuserStyle == "WandRound" || DiffuserStyle == "WandFlat") ? TorchDiameter
-                    : (DiffuserStyle == "WandThinRound" || DiffuserStyle == "WandThinFlat" ) ? TorchDiameter / 2
-                    : (DiffuserStyle == "Globe" || DiffuserStyle == "GlobeFlat") ? TorchDiameter *2
-                    : DiffuserEndDiameter > 0 ? DiffuserEndDiameter : TorchDiameter *2;
+diffuserEndDiameter = (DiffuserStyle == "ShortRound" || DiffuserStyle == "ShortFlat") ? TorchDiameterTop *1.25
+                    : (DiffuserStyle == "WandShortRound" || DiffuserStyle == "WandShortFlat" || DiffuserStyle == "WandLongRound" || DiffuserStyle == "WandLongFlat") ? TorchDiameterTop
+                    : (DiffuserStyle == "WandThinRound" || DiffuserStyle == "WandThinFlat" ) ? TorchDiameterTop / 2
+                    : (DiffuserStyle == "Globe" || DiffuserStyle == "GlobeFlat") ? TorchDiameterTop *2
+                    : DiffuserEndDiameter > 0 ? DiffuserEndDiameter : TorchDiameterTop *2;
 
-diffuserLength = (DiffuserStyle == "ShortRound" || DiffuserStyle == "ShortFlat") ? (diffuserEndDiameter-TorchDiameter)*1.5
-               : (DiffuserStyle == "WandRound" || DiffuserStyle == "WandFlat" || DiffuserStyle == "WandThinRound" || DiffuserStyle == "WandThinFlat" ) ? TorchDiameter * 2
-               : (DiffuserStyle == "Globe" || DiffuserStyle == "GlobeFlat") ? TorchDiameter
-               : DiffuserLength > 0 ? DiffuserLength : (diffuserEndDiameter-TorchDiameter)/1.5;
+diffuserLength = (DiffuserStyle == "ShortRound" || DiffuserStyle == "ShortFlat") ? (diffuserEndDiameter-TorchDiameterTop)*1.5
+               : (DiffuserStyle == "WandShortRound" || DiffuserStyle == "WandShortFlat" ) ? TorchDiameterTop 
+               : (DiffuserStyle == "WandLongRound" || DiffuserStyle == "WandLongFlat" || DiffuserStyle == "WandThinRound" || DiffuserStyle == "WandThinFlat" ) ? TorchDiameterTop * 2
+               : (DiffuserStyle == "Globe" || DiffuserStyle == "GlobeFlat") ? TorchDiameterTop
+               : DiffuserLength > 0 ? DiffuserLength : (diffuserEndDiameter-TorchDiameterTop)/1.5;
 
-diffuserEndShape  = (DiffuserStyle == "ShortRound" || DiffuserStyle == "WandRound" ||  DiffuserStyle == "WandThinRound" || DiffuserStyle == "Globe") ? "rounded"
-                  : (DiffuserStyle == "ShortFlat" || DiffuserStyle == "WandFlat" || DiffuserStyle == "WandThinFlat" || DiffuserStyle == "GlobeFlat") ? "flat"
+diffuserEndShape  = (DiffuserStyle == "ShortRound" || DiffuserStyle == "WandShortRound" || DiffuserStyle == "WandLongRound" ||  DiffuserStyle == "WandThinRound" || DiffuserStyle == "Globe") ? "rounded"
+                  : (DiffuserStyle == "ShortFlat" || DiffuserStyle == "WandShortFlat" || DiffuserStyle == "WandLongFlat" || DiffuserStyle == "WandThinFlat" || DiffuserStyle == "GlobeFlat") ? "flat"
                   : DiffuserEndShape;
 
 //Apply defaults
-connector1Length = TorchOverlap > 0 ? TorchOverlap : TorchDiameter / 3;
+connector1Length = TorchOverlap > 0 ? TorchOverlap : TorchDiameterTop / 3;
 endCapThickness = DiffuserEndThickness > 0 ? DiffuserEndThickness : WallThickness;
 stopThickness = StopThickness > 0 ? StopThickness: WallThickness/2;
 
 FlashlightDiffuser(
-  connectorMeasurement = "inner",
-  connectorDiameter = TorchDiameter,
+  connectorMeasurement = Measurement,
+  connectorDiameterTop = TorchDiameterTop,
+  connectorDiameterLower = TorchDiameterLower,
   connectorWallThickness = WallThickness,
   connectorLength = connector1Length,
-  connectorTaper= TorchTaper*-1,
   connectorStopThickness = stopThickness,
   connectorStopLength = StopLength,
   connectorStopSymmetrical = 1,
 
   diffuserLength = diffuserLength,
   
-  diffuserCapMeasurement = "inner",
+  diffuserCapMeasurement = Measurement,
   diffuserCapDiameter = diffuserEndDiameter,
   diffuserCapThickness = endCapThickness,
   diffuserWallThickness = WallThickness,
   diffuserCapShape = diffuserEndShape,
   fitTest = DiffuserStyle == "TestFit");
-  
- 
- 
+
 module FlashlightDiffuser(
     connectorWallThickness = 2,
     connectorMeasurement= "inner",
-    connectorDiameter = 0,
+    connectorDiameterTop = 0,
+    connectorDiameterLower = 0,
     connectorLength = 0,
-    connectorTaper = 0,
     connectorStopThickness = 0,
     connectorStopLength = 0,
     connectorStopSymmetrical = 0,
@@ -98,33 +101,31 @@ module FlashlightDiffuser(
     diffuserCapShape = "flat",
     fitTest = false  
 ){
-    end1InnerDiameter = connectorMeasurement == "inner" ? connectorDiameter : connectorDiameter - connectorWallThickness * 2;
-    end2InnerDiameter = diffuserCapMeasurement == "inner" ? diffuserCapDiameter : diffuserCapDiameter - diffuserWallThickness * 2;
  
-    //Apply taper, from small to big
-    end1InnerStartDiameter = end1InnerDiameter - connectorTaper / 2;
-    end1OuterStartDiameter = end1InnerStartDiameter + connectorWallThickness*2;
-    end1InnerEndDiameter = end1InnerDiameter + connectorTaper / 2;
-    end1OuterEndDiameter = end1InnerEndDiameter + connectorWallThickness*2;
+    _connectorDiameterLower = connectorDiameterLower == 0 ? connectorDiameterTop : connectorDiameterLower;
+ 
+    connectorInnerTopDiameter = connectorMeasurement == "inner" ? connectorDiameterTop : connectorDiameterTop - connectorWallThickness * 2;
+    connectorOuterTopDiameter = connectorInnerTopDiameter + connectorWallThickness*2;
+ 
+    connectorInnerLowerDiameter = connectorMeasurement == "inner" ? _connectorDiameterLower : _connectorDiameterLower - connectorWallThickness * 2;
+    connectorOuterLowerDiameter = connectorInnerLowerDiameter + connectorWallThickness*2;
     
-    //Apply taper, from big to small
-    end2OuterDiameter = end2InnerDiameter + connectorWallThickness*2;
+    diffuserCapInnerDiameter = diffuserCapMeasurement == "inner" ? diffuserCapDiameter : diffuserCapDiameter - diffuserWallThickness * 2;
+    diffuserCapOuterDiameter = diffuserCapInnerDiameter + connectorWallThickness*2;
   
-  echo(end1InnerStartDiameter = end1InnerStartDiameter, end1OuterStartDiameter = end1OuterStartDiameter, end1InnerEndDiameter = end1InnerEndDiameter, end1OuterEndDiameter= end1OuterEndDiameter);
+  echo(connectorInnerTopDiameter = connectorInnerTopDiameter, connectorOuterTopDiameter = connectorOuterTopDiameter, connectorInnerLowerDiameter = connectorInnerLowerDiameter, connectorOuterLowerDiameter = connectorOuterLowerDiameter);
   
     color("LightPink") 
     //Create the start connector
-    HoseConnector(
-      innerStartDiameter = end1InnerStartDiameter,
-      innerEndDiameter = end1InnerEndDiameter,
+    Connector(
+      innerStartDiameter = connectorInnerLowerDiameter,
+      innerEndDiameter = connectorInnerTopDiameter,
       connectorMeasurement = connectorMeasurement,
       length = connectorLength,
       wallThickness = connectorWallThickness,
       stopLength = connectorStopLength,
       stopWidth = connectorStopThickness,
-      stopSymmetrical = connectorStopSymmetrical,
-      endCapDiameter = 0,
-      endCapThickness = 0
+      stopSymmetrical = connectorStopSymmetrical
     );
 
     if(!fitTest)
@@ -133,15 +134,15 @@ module FlashlightDiffuser(
       connectorTotalLength = connectorLength + connectorStopLength;
      
       // transitionLength is not wanted for sweep
-      _transitionLength = diffuserLength == 0? abs(end1OuterEndDiameter - end2OuterStartDiameter)/2 : diffuserLength;
+      _transitionLength = diffuserLength == 0? abs(connectorOuterTopDiameter - diffuserCapOuterDiameter)/2 : diffuserLength;
 
       hoseSpacer = diffuserWallThickness;
-      //Tapered section position to the end of the bent pipe
+      
       color("SpringGreen")
       translate([0, 0, connectorTotalLength])
       Pipe(
-        diameter1 = end1InnerEndDiameter, 
-        diameter2 = end2InnerDiameter, 
+        diameter1 = connectorInnerTopDiameter, 
+        diameter2 = diffuserCapInnerDiameter, 
         length = _transitionLength, 
         wallThickness1 = connectorWallThickness, 
         wallThickness2 = connectorWallThickness);   
@@ -151,26 +152,16 @@ module FlashlightDiffuser(
         union(){
           if(diffuserEndShape == "flat")
           {
-          translate([0,0,diffuserWallThickness])
-            mirror ([0,0,1])
-            HoseConnector(
-              innerStartDiameter = end2InnerDiameter,
-              innerEndDiameter = end2InnerDiameter,
-              connectorMeasurement = diffuserCapMeasurement,
-              length = diffuserCapThickness,
-              wallThickness = diffuserWallThickness,
-              endCapDiameter = 0,
-              endCapThickness = diffuserCapThickness
-            );      
+              cylinder(diffuserCapThickness, d=diffuserCapOuterDiameter);
           }
           
           if(diffuserEndShape == "rounded")
           {
               difference(){
-              sphere(d = end2OuterDiameter);
-              sphere(d = end2InnerDiameter);
-              translate([0,0,-end2OuterDiameter/2])
-              cube(end2OuterDiameter,true);
+              sphere(d = diffuserCapOuterDiameter);
+              sphere(d = diffuserCapInnerDiameter);
+              translate([0,0,-diffuserCapOuterDiameter/2])
+              cube(diffuserCapOuterDiameter,true);
           }
         }
       }
@@ -216,7 +207,7 @@ module Pipe(
 }
 
  
-module HoseConnector(
+module Connector(
     innerStartDiameter,
     innerEndDiameter,
     connectorMeasurement,
@@ -224,9 +215,7 @@ module HoseConnector(
     wallThickness,
     stopLength = 0,
     stopWidth = 0,
-    stopSymmetrical = 0,
-    endCapDiameter = 0,
-    endCapThickness = 0,
+    stopSymmetrical = 0
 )
 {
     union() {
@@ -251,17 +240,6 @@ module HoseConnector(
             cylinder(fudgeFactor, d=innerEndDiameter);
         }
       }
-   
-      // Create the end cap
-    if(endCapThickness > 0)
-    {
-      difference () 
-      {
-        cylinder(endCapThickness, d=innerEndDiameter + wallThickness/2);
-        translate([0,0,-fudgeFactor])
-          cylinder(endCapThickness + fudgeFactor * 2, d=endCapDiameter);
-      }
-    }
       
     // Create the hose stop
     if(stopWidth > 0)

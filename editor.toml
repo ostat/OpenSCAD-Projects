@@ -6,25 +6,22 @@ mode = "multi"
 head-extra = ''
 
 [[model]]
-file = "toy_stack_octahedron.scad"
+file = "CncClamps_OpenSCAD/CNCClamps.scad"
 
 [[model]]
-file = "stand.scad"
+file = "DrawerDivider_OpenSCAD/DrawerDivider.scad"
 
 [[model]]
-file = "stand.scad"
+file = "DripTray_OpenSCAD/DripTray.scad"
 
 [[model]]
-file = "TapeCutter_OpenSCAD.scad"
+file = "FlashlightDiffuser_OpenSCAD/FlashlightDiffuser.scad"
 
 [[model]]
-file = "FlashlightDiffuser.scad"
+file = "leg_caps_OpenSCAD/stand.scad"
 
 [[model]]
-file = "DripTray.scad"
+file = "TapeCutter_OpenSCAD/TapeCutter_OpenSCAD.scad"
 
 [[model]]
-file = "DrawerDivider.scad"
-
-[[model]]
-file = "CNCClamps.scad"
+file = "toy-stack-octahedron/toy_stack_octahedron.scad"

@@ -1,0 +1,30 @@
+[project]
+name = "Ostat OpenSCAD Projects"
+uri = "https://github.com/ostat/OpenSCAD-Projects"
+export-filename-prefix = "ostat"
+mode = "multi"
+head-extra = ''
+
+[[model]]
+file = "toy_stack_octahedron.scad"
+
+[[model]]
+file = "stand.scad"
+
+[[model]]
+file = "stand.scad"
+
+[[model]]
+file = "TapeCutter_OpenSCAD.scad"
+
+[[model]]
+file = "FlashlightDiffuser.scad"
+
+[[model]]
+file = "DripTray.scad"
+
+[[model]]
+file = "DrawerDivider.scad"
+
+[[model]]
+file = "CNCClamps.scad"

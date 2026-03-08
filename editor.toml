@@ -25,3 +25,6 @@ file = "TapeCutter_OpenSCAD/TapeCutter_OpenSCAD.scad"
 
 [[model]]
 file = "toy-stack-octahedron/toy_stack_octahedron.scad"
+
+[[model]]
+file = "light_box/light_box.scad"

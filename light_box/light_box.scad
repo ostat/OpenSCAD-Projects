@@ -54,7 +54,7 @@ lip_wall_height = 0; //0.1
 
 /* [Slat Pattern] */
 // Add pattern to wall to prevent warping
-slats_enabled = "brick"; // [disabled, slat, brick]
+slats_enabled = "slat"; // [disabled, slat, brick]
 // width of slats
 slats_width = -0.5; //
 // depth of pattern in mm
@@ -254,7 +254,11 @@ difference(){
           slat_width = slats_width,
           slat_chamfer = [slats_depth,0],
           center = true,
-          rotateGrid = false);
+          rotateGrid = false)
+            chamfered_cube(
+              $brick_size,
+              topChamfer = 0,
+              bottomChamfer = slats_depth+slats_outerwall_extention);
       } else {
         brick_pattern(
           canvis_size=pos[3],
@@ -543,8 +547,6 @@ module slat_pattern(
   
   assert(is_list(chamfer), "chamfer must be list"); 
 
-  echo("slat_pattern", chamfer=chamfer, slat_chamfer=slat_chamfer);
-  
   working_canvis_size = 
     let (cs = rotateGrid ? [canvis_size.y,canvis_size.x] : canvis_size)
     border > 0 ? [cs.x-border*2,cs.y-border*2] : cs;
@@ -560,10 +562,15 @@ module slat_pattern(
       width = (working_canvis_size.x + spacing)/nx-spacing,
       size = [width, working_canvis_size.y, thickness])
     translate([(width+spacing)*ix,0])
-    chamfered_cube(
-      size,
-      topChamfer = chamfer[1],
-      bottomChamfer = chamfer[0]);
+      if($children > 0){
+        $brick_size = size;
+        children();
+      } else {
+        chamfered_cube(
+          size,
+          topChamfer = chamfer[1],
+          bottomChamfer = chamfer[0]);
+      }
   }
 }
 

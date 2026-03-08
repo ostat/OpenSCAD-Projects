@@ -137,10 +137,10 @@ module rounded_cube(
   supReduction_y_offset = [auto_support_reduction(supportReduction_y[0], bottomRadius), auto_support_reduction(supportReduction_y[1], topRadius)];
 
   positions=[
-     [[sideRadius                         ,sideRadius],                        [0,0]]
-    ,[[max(size.x-sideRadius, sideRadius) ,sideRadius]                        ,[1,0]]
-    ,[[max(size.x-sideRadius, sideRadius) ,max(size.y-sideRadius, sideRadius)],[1,1]]
-    ,[[sideRadius                         ,max(size.y-sideRadius, sideRadius)],[0,1]]
+     [[sideRadius                         ,sideRadius]                        ,[0,0],[0,0,180]]
+    ,[[max(size.x-sideRadius, sideRadius) ,sideRadius]                        ,[1,0],[0,0,270]]
+    ,[[max(size.x-sideRadius, sideRadius) ,max(size.y-sideRadius, sideRadius)],[1,1],[0,0,0]]
+    ,[[sideRadius                         ,max(size.y-sideRadius, sideRadius)],[0,1],[0,0,90]]
     ];
 
   translate(centerxy ? [-size.x/2,-size.y/2,0] : [0,0,0])
@@ -150,7 +150,13 @@ module rounded_cube(
     {
       translate(positions[i][0])
         union(){
-        roundedCylinder(h=size.z,r=sideRadius,roundedr2=topRadius,roundedr1=bottomRadius);
+        rotate(positions[i][2])
+        roundedCylinder(
+          h=size.z,
+          r=sideRadius,
+          roundedr2=topRadius,
+          roundedr1=bottomRadius, 
+          angle=90);
         if(supReduction_z[1] > 0)
           translate([0,0,size.z-topRadius])
           cylinder(h=topRadius, r=supReduction_z[1]);

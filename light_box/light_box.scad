@@ -126,7 +126,7 @@ difference(){
 
     echo(inner_size_adjusted=inner_size_adjusted);
   //outer body  
-  roundedCube(
+  rounded_cube(
     size=outer_size_adjusted,
     sideRadius = wall_radius_adjusted,
     topRadius = roof_radius_adjusted,
@@ -137,7 +137,7 @@ difference(){
   
   //inner body
   translate([wall_thickness,wall_thickness,wall_thickness])
-  roundedCube(
+  rounded_cube(
     size=inner_size_adjusted,
     sideRadius = max(0, wall_radius_adjusted-wall_thickness),
     topRadius = max(0, roof_radius_adjusted-wall_thickness),
@@ -189,13 +189,13 @@ difference(){
 
   if(lip_enabled){
     translate([wall_thickness,wall_thickness,selected_outer_size.z-lip_wall_height+fudge_factor])
-    roundedCube(
+    rounded_cube(
       size=[inner_size_adjusted.x, inner_size_adjusted.y, lip_size+fudge_factor],
       sideRadius = max(0, wall_radius_adjusted-wall_thickness),
       topRadius = 0,
       bottomRadius = 0);
     translate([wall_thickness+lip_size,wall_thickness+lip_size,selected_outer_size.z-lip_size*2+fudge_factor])
-    roundedCube(
+    rounded_cube(
       size=[inner_size_adjusted.x-lip_size*2, inner_size_adjusted.y-lip_size*2, lip_size*2+fudge_factor],
       sideRadius = max(0, wall_radius_adjusted-wall_thickness-lip_size),
       topRadius = 0,
@@ -344,7 +344,7 @@ module cutout(
 //topRadius = the radius of the top of the cube
 //bottomRadius = the radius of the top of the cube
 //sideRadius = the radius of the sides. This must be over 0.
-module roundedCube(
+module rounded_cube(
   x,
   y,
   z,
@@ -361,11 +361,11 @@ module roundedCube(
   minSideRadius = 0.01;
   assert(is_list(size), "size must be a list");
   size = len(size) == 3 ? size : [x,y,z];
-  
+
   topRadius = topRadius > 0 ? topRadius : cornerRadius;
   bottomRadius = bottomRadius > 0 ? bottomRadius : cornerRadius;
   sideRadius = max(minSideRadius, sideRadius > 0 ? sideRadius : cornerRadius);
-  
+
   supportReduction_z = is_num(supportReduction_z) ? [supportReduction_z, supportReduction_z] : supportReduction_z;
   supportReduction_x = is_num(supportReduction_x) ? [supportReduction_x, supportReduction_x] : supportReduction_x;
   supportReduction_y = is_num(supportReduction_y) ? [supportReduction_y, supportReduction_y] : supportReduction_y;
@@ -374,7 +374,7 @@ module roundedCube(
   assert(bottomRadius <= sideRadius, str("bottomRadius must be less than or equal to sideRadius. bottomRadius:", bottomRadius, " sideRadius:", sideRadius));
 
   //Support reduction should move in to roundedCylinder
-  function auto_support_reduction(supportReduction, corner_radius, center_radius) = 
+  function auto_support_reduction(supportReduction, corner_radius, center_radius) =
     let(center_radius = is_num(center_radius) ? center_radius : corner_radius,
       sr = (supportReduction == -1 ? corner_radius/2 : supportReduction)+max(0,center_radius-corner_radius))
     min(sr, center_radius);
@@ -389,27 +389,33 @@ module roundedCube(
   supReduction_y_offset = [auto_support_reduction(supportReduction_y[0], bottomRadius), auto_support_reduction(supportReduction_y[1], topRadius)];
 
   positions=[
-     [[sideRadius                         ,sideRadius],                        [0,0]]
-    ,[[max(size.x-sideRadius, sideRadius) ,sideRadius]                        ,[1,0]]
-    ,[[max(size.x-sideRadius, sideRadius) ,max(size.y-sideRadius, sideRadius)],[1,1]]
-    ,[[sideRadius                         ,max(size.y-sideRadius, sideRadius)],[0,1]]
+     [[sideRadius                         ,sideRadius]                        ,[0,0],[0,0,180]]
+    ,[[max(size.x-sideRadius, sideRadius) ,sideRadius]                        ,[1,0],[0,0,270]]
+    ,[[max(size.x-sideRadius, sideRadius) ,max(size.y-sideRadius, sideRadius)],[1,1],[0,0,0]]
+    ,[[sideRadius                         ,max(size.y-sideRadius, sideRadius)],[0,1],[0,0,90]]
     ];
-    
+
   translate(centerxy ? [-size.x/2,-size.y/2,0] : [0,0,0])
-  hull() 
+  hull()
   {
     for (i =[0:1:len(positions)-1])
     {
-      translate(positions[i][0]) 
+      translate(positions[i][0])
         union(){
-        roundedCylinder(h=size.z,r=sideRadius,roundedr2=topRadius,roundedr1=bottomRadius);
+        rotate(positions[i][2])
+        roundedCylinder(
+          h=size.z,
+          r=sideRadius,
+          roundedr2=topRadius,
+          roundedr1=bottomRadius, 
+          angle=90);
         if(supReduction_z[1] > 0)
           translate([0,0,size.z-topRadius])
           cylinder(h=topRadius, r=supReduction_z[1]);
 
         if(supReduction_z[0] > 0)
           cylinder(h=bottomRadius, r=supReduction_z[0]);
-        
+
         if(supReduction_x[0] > 0 && positions[i][1].x ==0){
           if(topRadius ==0 && bottomRadius == 0)
           {
@@ -426,7 +432,7 @@ module roundedCube(
             cylinder(h=sideRadius*2, r=supReduction_x[0],center=true);
           }
         }
-        
+
         if(supReduction_x[1] > 0 && positions[i][1].x ==1){
          if(topRadius == 0 && bottomRadius == 0)
          {
@@ -443,7 +449,7 @@ module roundedCube(
             cylinder(h=sideRadius*2, r=supReduction_x[1],center=true);
           }
         }
-        
+
         if(supReduction_y[0] > 0 && positions[i][1].y == 0){
             //bottom
             translate([0,0,supReduction_y[0]+supReduction_y_offset[0]])
@@ -469,28 +475,28 @@ module roundedCube(
   }
 }
 
-module roundedCylinder(h,r,roundedr=0,roundedr1=0,roundedr2=0)
+module roundedCylinder(h,r,roundedr=0,roundedr1=0,roundedr2=0, angle=360)
 {
   assert(is_num(h), "h must have a value");
   assert(is_num(r), "r must have a value");
   roundedr1 = roundedr1 > 0 ? roundedr1 : roundedr;
   roundedr2 = roundedr2 > 0 ? roundedr2 : roundedr;
-  
+
   assert(is_num(roundedr1), "roundedr1 or roundedr must have a value");
   assert(is_num(roundedr2), "roundedr2 or roundedr must have a value");
-  
+
   if(roundedr1 > 0 || roundedr2 > 0){
     hull(){
       if(roundedr1 > 0)
-        roundedDisk(r,roundedr1,half=-1);
+        roundedDisk(r,roundedr1,half=-1,angle=angle);
       else
         cylinder(r=r,h=h-roundedr2);
-        
+
       if(roundedr2 > 0)
-        translate([0,0,h-roundedr2*2]) 
-          roundedDisk(r,roundedr2,half=1);
+        translate([0,0,h-roundedr2*2])
+          roundedDisk(r,roundedr2,half=1,angle=angle);
       else
-        translate([0,0,roundedr1]) 
+        translate([0,0,roundedr1])
           cylinder(r=r,h=h-roundedr1);
     }
   }
@@ -499,31 +505,30 @@ module roundedCylinder(h,r,roundedr=0,roundedr1=0,roundedr2=0)
   }
 }
 
-module roundedDisk(r,roundedr, half=0){
+module roundedDisk(r,roundedr, half=0, angle=360){
  hull(){
-    translate([0,0,roundedr]) 
-    rotate_extrude() 
+    translate([0,0,roundedr])
+    rotate_extrude(angle=angle, convexity=10)
     translate([r-roundedr,0,0])
     difference(){
       circle(roundedr);
       //Remove inner half so we dont get error when r<roundedr*2
       translate([-roundedr*2,-roundedr,0])
       square(roundedr*2);
-      
+
       if(half<0){
         //Remove top half
         translate([-roundedr,0,0])
-        square(roundedr*2);   
+        square(roundedr*2);
       }
       if(half>0){
         //Remove bottom half
         translate([-roundedr,-roundedr*2,0])
-        square(roundedr*2);   
+        square(roundedr*2);
       }
     }
   }
 }
-
 
 module slat_pattern(
   canvis_size=[31,31],
@@ -602,7 +607,7 @@ module chamfered_cube(
   chamfer = min(size.z, chamfer);
   translate(centerxy ? [-size.x/2, -size.y/2, 0] : [0,0,0])
   union(){
-    *roundedCube(
+    *rounded_cube(
       size=[size.x, size.y, size.z],
       topRadius = topRadius,
       bottomRadius = bottomRadius,
@@ -679,7 +684,7 @@ module brick_pattern(
             children();
             }
           else {
-            roundedCube(
+            rounded_cube(
               size = size, 
               sideRadius = corner_radius);
           }

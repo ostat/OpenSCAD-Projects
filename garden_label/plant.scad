@@ -1,15 +1,13 @@
-//include <scadqr/qr.scad>
-
 /* [ostat Plant Sign generator v1.0] */
 
 //select what to render
 render_part = "layered"; //[back, front, layered, combinedup:combined face up (works on makerworld export as 3mf), combineddown:combined face down (works on makerworld export as 3mf)]
-
-Common_Herb = "custom"; //[custom, Basil, Parsley, Coriander, Mint, Rosemary, Thyme, Oregano, Sage, Chives, Dill, Tarragon, Bayleaf, Lemongrass, Marjoram, Fennel, Sorrel, Lovage, Marigold, Summer Savory, Winter Savory, Shiso, curry plant]
-
-Common_Flower = "custom"; //[custom, Rose, Sunflower, Lavender, Marigold, Daisy, Tulip, Lily, Orchid, Chrysanthemum, Peony, Petunia, Pansy, Carnation, Hibiscus, Jasmine, Camellia, Begonia, Geranium, Hydrangea, Daffodil, Magnolia, Zinnia, Snapdragon, Bluebell, Aster, Cosmos, Foxglove, Gardenia, Hyacinth, Iris, Lotus, Morning Glory, Poppy, Violet, Wisteria, Yarrow, Azalea, Gerbera, DesertRose, MexicanHeather]
-
-Common_Fruit = "custom"; //[custom, Tomato, Apple, Pear, Peach, Plum, Cherry, Apricot, Nectarine, Orange, Lemon, Lime, Mandarin, Grapefruit, Mango, Avocado, Olive, Fig, Pomegranate, Mulberry, Persimmon, Guava, Lychee, Longan, Loquat, Quince, Jackfruit, Breadfruit, Starfruit, Durian, Coconut, Macadamia, Almond, Cashew, Pawpaw, Soursop, Custard Apple, Sapodilla, Tamarind, Date Palm, Kumquat, Feijoa, Jujube, Black Sapote, White Sapote, Finger Lime, Dragon Fruit, Papaya, Banana, Coffee, Cacao, Tea, Pepper, Cinnamon, Clove, Nutmeg, Allspice, Bay Laurel, Curry Leaf, Tamarillo, MiracleBerry, Strawberry]
+//Herbs
+Common_Herb = "custom"; //[custom, Basil, Bay leaf, Chives, Coriander, Curry Plant, Dill, Fennel, Lemongrass, Lovage, Marigold, Marjoram, Mint, Oregano, Parsley, Rosemary, Sage, Shiso, Sorrel, Summer Savory, Tarragon, Thyme, Winter Savory]
+//Flowers
+Common_Flower = "custom"; //[custom, Aster, Azalea, Begonia, Bluebell, Camellia, Carnation, Chrysanthemum, Cosmos, Daffodil, Daisy, DesertRose, Foxglove, Gardenia, Geranium, Gerbera, Hibiscus, Hyacinth, Hydrangea, Iris, Jasmine, Lavender, Lily, Lotus, Magnolia, Marigold, MexicanHeather, Morning Glory, Orchid, Pansy, Peony, Petunia, Poppy, Rose, Snapdragon, Sunflower, Tulip, Violet, Wisteria, Yarrow, Zinnia]
+//Fruits
+Common_Fruit = "custom"; //[custom, Allspice, Almond, Apple, Apricot, Avocado, Banana, Bay Laurel, Black Sapote, Breadfruit, Cacao, Cashew, Cherry, Cinnamon, Clove, Coconut, Coffee, Curry Leaf, Custard Apple, Date Palm, Dragon Fruit, Durian, Feijoa, Fig, Finger Lime, Grapefruit, Guava, Jackfruit, Jujube, Kumquat, Lemon, Lime, Longan, Loquat, Lychee, Macadamia, Mandarin, Mango, MiracleBerry, Mulberry, Nectarine, Nutmeg, Olive, Orange, Papaya, Pawpaw, Peach, Pear, Pepper, Persimmon, Plum, Pomegranate, Quince, Sapodilla, Soursop, Starfruit, Strawberry, Tamarillo, Tamarind, Tea, Tomato, White Sapote]
 
 // Line 1 text I.E Name
 Text_Line_1 = "";
@@ -26,28 +24,26 @@ qr_value = "";
 // Display a demo of the short list of fonts
 Enable_Font_Short_List_Demo = false;
 //Font for text, E.G. HarmonyOS Sans for block, Lobster Two is cursive, Pacifico is cursive
-Text_Font_Short_List = "HarmonyOS"; //[HarmonyOS_Bold,Lobster_Two,Rubik,Pacifico,Bungee,NTR,Playfair,Chicle,Rouge_Script,Henny_Penny]
+Text_Font_Short_List = "HarmonyOS"; //[HarmonyOS,Lobster_Two,Rubik,Pacifico,Bungee,NTR,Playfair,Chicle,Rouge_Script,Henny_Penny]
 //Text full font list. View at fonts.google.com
 Text_Font_Full_List = ""; // font
 //Font size
 Text_Size = 10;            // [1:1:50]
 // Predefined colour sets
 Text_Color_Set = "Custom"; // [Custom, Gold, Pink, Blue, Blue_Inverted, Blue_Gold, Pink_Inverted, Pink_Gold]
-//Font color
+//Line color
 Text_Color = "#99FF99";    // color
 //Bold weight, 0 is default weight
 Text_Boldness = 0.0;      // [0:0.1:3]
 //Text Spacing, 1 is default spacing
 Text_Spacing = 1;         // [0.5:0.01:3]
-////Number of extrusion layers
+//Number of extrusion layers
 Text_Layers = 4;
 
 /* [Text Line 1 Style] */
 //x, y position for Line 1 (mm)
 Text_Line_1_Position = [0, 0];
-//Enable customisations for line
-Text_Line_1_Customise = false; 
-//Font for text, E.G. HarmonyOS Sansfor block, Lobster Two is cursive, Pacifico is cursive
+//Font for text, E.G. HarmonyOS Sans for block, Lobster Two is cursive, Pacifico is cursive
 Text_Line_1_Font = "";        // font
 //Enable Bold
 Text_Line_1_Font_Style_Bold = true;
@@ -55,7 +51,7 @@ Text_Line_1_Font_Style_Bold = true;
 Text_Line_1_Font_Style_Italics = false;
 //Font size
 Text_Line_1_Size = 0;         // [1:1:50]
-//Font size
+//Line Color for Line 1
 Text_Line_1_Color = "";    // color
 //Bold weight (-1 will use Text_Boldness)
 Text_Line_1_Boldness = -1;    // [0:0.1:3]
@@ -65,17 +61,15 @@ Text_Line_1_Spacing = -1;     // 0.01
 /* [Text Line 2 Style] */
 //x, y position for Line 2 (mm)
 Text_Line_2_Position = [0, 0];
-//Enable custom line
-Text_Line_2_Customise = false; 
-//Font for text, I.E. HarmonyOS Sansfor block, Lobster Two is cursive, Pacifico is cursive
-Text_Line_2_Font = "HarmonyOS_Bold";          // font
+//Font for text, I.E. HarmonyOS Sans for block, Lobster Two is cursive, Pacifico is cursive
+Text_Line_2_Font = "HarmonyOS";          // font
 //Enable Bold
 Text_Line_2_Font_Style_Bold = true;
 //Enable Italics
 Text_Line_2_Font_Style_Italics = true;
 //Font size for Line 2
-Text_Line_2_Size = -2;      
-//Font size for Line 2
+Text_Line_2_Size = -2;
+//Line Color for Line 2
 Text_Line_2_Color = "";    // color
 //Bold weight (-1 will use Text_Boldness)
 Text_Line_2_Boldness = -1;      // [0:0.1:3]
@@ -85,17 +79,15 @@ Text_Line_2_Spacing = -1; // 0.01
 /* [Text Line 3 Style] */
 //x, y position for Line 3 (mm)
 Text_Line_3_Position = [0, 0];
-//Enable custom line
-Text_Line_3_Customise = false; 
 //Font for text, I.E. HarmonyOS Sansfor block, Lobster Two is cursive, Pacifico is cursive
-Text_Line_3_Font = "Lobster Two:style=Bold Italic"; // font
+Text_Line_3_Font = "Lobster Two"; // font
 //Enable Bold
 Text_Line_3_Font_Style_Bold = true;
 //Enable Italics
 Text_Line_3_Font_Style_Italics = false;
 //Font size for Line 3
-Text_Line_3_Size = -2;        
-//Font size for Line 3
+Text_Line_3_Size = -2;
+//Line Color for Line 3
 Text_Line_3_Color = "";  // color
 //Bold weight (-1 will use Text_Boldness)
 Text_Line_3_Boldness = -1;      // [0:0.1:3]
@@ -103,19 +95,17 @@ Text_Line_3_Boldness = -1;      // [0:0.1:3]
 Text_Line_3_Spacing = -1;       // 0.01
 
 /* [Text Line 4 Style] */
-//x, y position for Line 3 (mm)
+//x, y position for Line 4 (mm)
 Text_Line_4_Position = [0, 0];
-//Enable custom line
-Text_Line_4_Customise = false; 
 //Font for text, I.E. HarmonyOS Sansfor block, Lobster Two is cursive, Pacifico is cursive
-Text_Line_4_Font = "Lobster Two:style=Bold Italic"; // font
+Text_Line_4_Font = "Lobster Two"; // font
 //Enable Bold
 Text_Line_4_Font_Style_Bold = true;
 //Enable Italics
 Text_Line_4_Font_Style_Italics = false;
-//Font size for Line 3
-Text_Line_4_Size = -2;        
-//Font size for Line 3
+//Font size for Line 4
+Text_Line_4_Size = -2;
+//Font size for Line 4
 Text_Line_4_Color = "";  // color
 //Bold weight (-1 will use Text_Boldness)
 Text_Line_4_Boldness = -1;      // [0:0.1:3]
@@ -141,18 +131,13 @@ Post_Count = 1;
 Post_Spacing = 0;
 //Width of the post (mm)
 Post_Width = 8;
-// Length of the post (mm), -ve is sign_hight/abs(post_length)
+// Length of the post (mm), -ve is sign_height/abs(post_length)
 Post_Length = 75; //0.1
-Post_Start_Line = 3;
-// Additional connect text
-Cross_Connector = true;
 
-
-/* [QR CODE] */
-qr_enabled = "right"; // [disabled, right, below]
+/* [QR Code] */
+qr_position = "right"; // [disabled, right, below]
 // of the QR code
 qr_size = 25; // [1:1000]
-
 // Error correction level
 error_correction = "L"; // [L:"Low (~7%)", M:"Medium (~15%)", Q: "Quartile (~25%)", H: "High (~30%)"]
 // Mask pattern
@@ -165,11 +150,12 @@ encoding = "UTF-8"; // [ Alphanumeric, UTF-8:"UTF-8 (Unicode)", Shift_JIS:"Shift
 Model_Position = [0, 0];
 //height of layer in mm
 Extrusion_Layer_Height = 0.20;
+fn = 128;
+show_debug = false;
 
 /* [Hidden] */
 module end_of_customizer_opts() {}
-
-$fn=128;
+$fn=fn;
 fudge_factor = 0.01;
 
 ienabled = 0;
@@ -188,7 +174,7 @@ ipos_midline=1;
 ipos_top=2;
 ipos_bottom=3;
 
-icolor_text = 0; 
+icolor_text = 0;
 icolor_backer = 1;
 
 text_values_name = 0;
@@ -198,137 +184,137 @@ text_values_line4 = 3;
 text_values_url = 4;
 
 //https://meta.wikimedia.org/wiki/Special:UrlShortener
-//using the url shortener can produce a QR code with lest bits, and larger squares.
+//using the url shortener can produce a QR code with less bits, and larger squares.
 Common_Herbs = [
-  ["Basil",         ["Basil",   "Ocimum basilicum", "https://w.wiki/3pe6"]], //https://en.wikipedia.org/wiki/Basil
-  ["Parsley",       ["Parsley", "Petroselinum crispum", "https://w.wiki/4gUf"]], //https://en.wikipedia.org/wiki/Parsley
-  ["Coriander",     ["Coriander", "Coriandrum sativum", "https://w.wiki/3jir"]], //https://en.wikipedia.org/wiki/Coriander
-  ["Mint",          ["Mint", "Mentha", "https://w.wiki/HPrR"]], //https://en.wikipedia.org/wiki/Mentha
-  ["Rosemary",      ["Rosemary", "Salvia rosmarinus", "https://w.wiki/9Vt8"]], //https://en.wikipedia.org/wiki/Rosemary
-  ["Thyme",         ["Thyme", "Thymus vulgaris", "https://w.wiki/9vV9"]], //https://en.wikipedia.org/wiki/Thyme
-  ["Oregano",       ["Oregano", "Origanum vulgare", "https://w.wiki/3r5D"]], //https://en.wikipedia.org/wiki/Oregano
-  ["Sage",          ["Sage", "Salvia officinalis", "https://w.wiki/NYKG"]], //https://en.wikipedia.org/wiki/Sage_(plant)
-  ["Chives",        ["Chives", "Allium schoenoprasum", "https://w.wiki/NYKH"]], //https://en.wikipedia.org/wiki/Chives
-  ["Dill",          ["Dill", "Anethum graveolens", "https://w.wiki/4kG4"]], //https://en.wikipedia.org/wiki/Dill
-  ["Tarragon",      ["Tarragon", "Artemisia dracunculus", "https://w.wiki/NYKS"]], //https://en.wikipedia.org/wiki/Tarragon
-  ["Bay leaf",      ["Bay leaf", "Laurus nobilis", "https://w.wiki/3rWr"]], //https://en.wikipedia.org/wiki/Bay_leaf
-  ["Lemongrass",    ["Lemongrass", "Cymbopogon citratus", "https://w.wiki/NYKi"]], //https://en.wikipedia.org/wiki/Lemongrass
-  ["Marjoram",      ["Marjoram", "Origanum majorana", "https://w.wiki/NYKm"]], //https://en.wikipedia.org/wiki/Marjoram
-  ["Fennel",        ["Fennel", "Foeniculum vulgare", "https://w.wiki/3ovf"]], //https://en.wikipedia.org/wiki/Fennel
-  ["Sorrel",        ["Sorrel", "Rumex acetosa", "https://w.wiki/MmQB"]],
-  ["Lovage",        ["Lovage", "Levisticum officinale", "https://w.wiki/MmQ9"]],
-  ["Marigold",      ["Marigold", "Tagetes", "https://w.wiki/62tz"]],
-  ["Summer Savory", ["Summer Savory", "Satureja hortensis", "https://w.wiki/MiL2"]],
-  ["Winter Savory", ["Winter Savory", "Satureja montana", "https://w.wiki/MmPu"]],
-  ["Shiso",         ["Shiso", "Perilla frutescens", "https://w.wiki/MmPs"]],
-  ["curry plant",   ["Curry Plant", "Helichrysum italicum", "https://w.wiki/MmPi"]]
+    ["Basil",         ["Basil",   "Ocimum basilicum", "https://w.wiki/3pe6"]], //https://en.wikipedia.org/wiki/Basil
+    ["Bay leaf",      ["Bay leaf", "Laurus nobilis", "https://w.wiki/3rWr"]], //https://en.wikipedia.org/wiki/Bay_leaf
+    ["Chives",        ["Chives", "Allium schoenoprasum", "https://w.wiki/NYKH"]], //https://en.wikipedia.org/wiki/Chives
+    ["Coriander",     ["Coriander", "Coriandrum sativum", "https://w.wiki/3jir"]], //https://en.wikipedia.org/wiki/Coriander
+    ["Curry Plant",   ["Curry Plant", "Helichrysum italicum", "https://w.wiki/MmPi"]],
+    ["Dill",          ["Dill", "Anethum graveolens", "https://w.wiki/4kG4"]], //https://en.wikipedia.org/wiki/Dill
+    ["Fennel",        ["Fennel", "Foeniculum vulgare", "https://w.wiki/3ovf"]], //https://en.wikipedia.org/wiki/Fennel
+    ["Lemongrass",    ["Lemongrass", "Cymbopogon citratus", "https://w.wiki/NYKi"]], //https://en.wikipedia.org/wiki/Lemongrass
+    ["Lovage",        ["Lovage", "Levisticum officinale", "https://w.wiki/MmQ9"]],
+    ["Marigold",      ["Marigold", "Tagetes", "https://w.wiki/62tz"]],
+    ["Marjoram",      ["Marjoram", "Origanum majorana", "https://w.wiki/NYKm"]], //https://en.wikipedia.org/wiki/Marjoram
+    ["Mint",          ["Mint", "Mentha", "https://w.wiki/HPrR"]], //https://en.wikipedia.org/wiki/Mentha
+    ["Oregano",       ["Oregano", "Origanum vulgare", "https://w.wiki/3r5D"]], //https://en.wikipedia.org/wiki/Oregano
+    ["Parsley",       ["Parsley", "Petroselinum crispum", "https://w.wiki/4gUf"]], //https://en.wikipedia.org/wiki/Parsley
+    ["Rosemary",      ["Rosemary", "Salvia rosmarinus", "https://w.wiki/9Vt8"]], //https://en.wikipedia.org/wiki/Rosemary
+    ["Sage",          ["Sage", "Salvia officinalis", "https://w.wiki/NYKG"]], //https://en.wikipedia.org/wiki/Sage_(plant)
+    ["Shiso",         ["Shiso", "Perilla frutescens", "https://w.wiki/MmPs"]],
+    ["Sorrel",        ["Sorrel", "Rumex acetosa", "https://w.wiki/MmQB"]],
+    ["Summer Savory", ["Summer Savory", "Satureja hortensis", "https://w.wiki/MiL2"]],
+    ["Tarragon",      ["Tarragon", "Artemisia dracunculus", "https://w.wiki/NYKS"]], //https://en.wikipedia.org/wiki/Tarragon
+    ["Thyme",         ["Thyme", "Thymus vulgaris", "https://w.wiki/9vV9"]], //https://en.wikipedia.org/wiki/Thyme
+    ["Winter Savory", ["Winter Savory", "Satureja montana", "https://w.wiki/MmPu"]],
   ];
 
 Common_Flowers = [
-  ["Rose", ["Rose", "Rosa", "https://w.wiki/3oBw"]], // https://en.wikipedia.org/wiki/Rose
-  ["Sunflower", ["Sunflower", "Helianthus annuus", "https://w.wiki/NYme"]], // https://en.wikipedia.org/wiki/Sunflower
-  ["Lavender", ["Lavender", "Lavandula", "https://w.wiki/NYmf"]], // https://en.wikipedia.org/wiki/Lavender
-  ["Marigold", ["Marigold", "Tagetes", "https://w.wiki/62tz"]], // https://en.wikipedia.org/wiki/Tagetes
-  ["Daisy", ["Daisy", "Bellis perennis", "https://w.wiki/DbXP"]], // https://en.wikipedia.org/wiki/Bellis_perennis
-  ["Tulip", ["Tulip", "Tulipa", "https://w.wiki/6ASZ"]], // https://en.wikipedia.org/wiki/Tulip
-  ["Lily", ["Lily", "Lilium", "https://w.wiki/NYnm"]], // https://en.wikipedia.org/wiki/Lilium
-  ["Orchid", ["Orchid", "Orchidaceae", "https://w.wiki/4XAN"]], // https://en.wikipedia.org/wiki/Orchidaceae
-  ["Chrysanthemum", ["Chrysanthemum", "Chrysanthemum", "https://w.wiki/3onw"]], // https://en.wikipedia.org/wiki/Chrysanthemum
-  ["Peony", ["Peony", "Paeonia", "https://w.wiki/3qcT"]], // https://en.wikipedia.org/wiki/Peony
-  ["Petunia", ["Petunia", "Petunia", "https://w.wiki/NYn$"]], // https://en.wikipedia.org/wiki/Petunia
-  ["Pansy", ["Pansy", "Viola tricolor var. hortensis", "https://w.wiki/NYo4"]], // https://en.wikipedia.org/wiki/Pansy
-  ["Carnation", ["Carnation", "Dianthus caryophyllus", "https://w.wiki/NYo8"]], // https://en.wikipedia.org/wiki/Dianthus_caryophyllus
-  ["Hibiscus", ["Hibiscus", "Hibiscus", "https://w.wiki/3jpP"]], // https://en.wikipedia.org/wiki/Hibiscus
-  ["Jasmine", ["Jasmine", "Jasminum", "https://w.wiki/7y5n"]], // https://en.wikipedia.org/wiki/Jasmine
-  ["Camellia", ["Camellia", "Camellia", "https://w.wiki/N6Eh"]], // https://en.wikipedia.org/wiki/Camellia
-  ["Begonia", ["Begonia", "Begonia", "https://w.wiki/N6Df"]], // https://en.wikipedia.org/wiki/Begonia
-  ["Geranium", ["Geranium", "Pelargonium", "https://w.wiki/FZNA"]], // https://en.wikipedia.org/wiki/Pelargonium
-  ["Hydrangea", ["Hydrangea", "Hydrangea", "https://w.wiki/3jzX"]], // https://en.wikipedia.org/wiki/Hydrangea
-  ["Daffodil", ["Daffodil", "Narcissus", "https://w.wiki/NYoV"]], // https://en.wikipedia.org/wiki/Narcissus
-  ["Magnolia", ["Magnolia", "Magnolia", "https://w.wiki/7vUU"]], // https://en.wikipedia.org/wiki/Magnolia
-  ["Zinnia", ["Zinnia", "Zinnia", "https://w.wiki/FiPo"]], // https://en.wikipedia.org/wiki/Zinnia
-  ["Snapdragon", ["Snapdragon", "Antirrhinum", "https://w.wiki/NYoh"]], // https://en.wikipedia.org/wiki/Antirrhinum
-  ["Bluebell", ["Bluebell", "Hyacinthoides non-scripta", "https://w.wiki/NYpm"]], // https://en.wikipedia.org/wiki/Hyacinthoides_non-scripta
-  ["Aster", ["Aster", "Aster", "https://w.wiki/NYpj"]], // https://en.wikipedia.org/wiki/Aster_(genus)
-  ["Cosmos", ["Cosmos", "Cosmos bipinnatus", "https://w.wiki/NYpe"]], // https://en.wikipedia.org/wiki/Cosmos_bipinnatus
-  ["Foxglove", ["Foxglove", "Digitalis purpurea", "https://w.wiki/BZzz"]], // https://en.wikipedia.org/wiki/Digitalis_purpurea
-  ["Gardenia", ["Gardenia", "Gardenia", "https://w.wiki/MUUc"]], // https://en.wikipedia.org/wiki/Gardenia
-  ["Hyacinth", ["Hyacinth", "Hyacinthus", "https://w.wiki/NYpP"]], // https://en.wikipedia.org/wiki/Hyacinth_(plant)
-  ["Iris", ["Iris", "Iris", "https://w.wiki/8W8V"]], // https://en.wikipedia.org/wiki/Iris_(plant)
-  ["Lotus", ["Lotus", "Nelumbo nucifera", "https://w.wiki/7EY2"]], // https://en.wikipedia.org/wiki/Nelumbo_nucifera
-  ["Morning Glory", ["Morning Glory", "Ipomoea", "https://w.wiki/AVWo"]], // https://en.wikipedia.org/wiki/Morning_glory
-  ["Poppy", ["Poppy", "Papaver", "https://w.wiki/3om5"]], // https://en.wikipedia.org/wiki/Poppy
-  ["Violet", ["Violet", "Viola", "https://w.wiki/7soi"]], // https://en.wikipedia.org/wiki/Viola_(plant)
-  ["Wisteria", ["Wisteria", "Wisteria", "https://w.wiki/DmMS"]], // https://en.wikipedia.org/wiki/Wisteria
-  ["Yarrow", ["Yarrow", "Achillea millefolium", "https://w.wiki/AVPY"]], // https://en.wikipedia.org/wiki/Achillea_millefolium
-  ["Azalea", ["Azalea", "Rhododendron", "https://w.wiki/ND2x"]], // https://en.wikipedia.org/wiki/Azalea
-  ["Gerbera", ["Gerbera", "Gerbera", "https://w.wiki/Ei5n"]], // https://en.wikipedia.org/wiki/Gerbera
-  ["DesertRose", ["Desert Rose", "Adenium obesum", "https://w.wiki/NYpA"]], // https://en.wikipedia.org/wiki/Adenium_obesum
-  ["MexicanHeather", ["Mexican Heather", "Cuphea hyssopifolia", "https://w.wiki/Knbn"]] // https://en.wikipedia.org/wiki/Cuphea_hyssopifolia
+    ["Aster", ["Aster", "Aster", "https://w.wiki/NYpj"]], // https://en.wikipedia.org/wiki/Aster_(genus)
+    ["Azalea", ["Azalea", "Rhododendron", "https://w.wiki/ND2x"]], // https://en.wikipedia.org/wiki/Azalea
+    ["Begonia", ["Begonia", "Begonia", "https://w.wiki/N6Df"]], // https://en.wikipedia.org/wiki/Begonia
+    ["Bluebell", ["Bluebell", "Hyacinthoides non-scripta", "https://w.wiki/NYpm"]], // https://en.wikipedia.org/wiki/Hyacinthoides_non-scripta
+    ["Camellia", ["Camellia", "Camellia", "https://w.wiki/N6Eh"]], // https://en.wikipedia.org/wiki/Camellia
+    ["Carnation", ["Carnation", "Dianthus caryophyllus", "https://w.wiki/NYo8"]], // https://en.wikipedia.org/wiki/Dianthus_caryophyllus
+    ["Chrysanthemum", ["Chrysanthemum", "Chrysanthemum", "https://w.wiki/3onw"]], // https://en.wikipedia.org/wiki/Chrysanthemum
+    ["Cosmos", ["Cosmos", "Cosmos bipinnatus", "https://w.wiki/NYpe"]], // https://en.wikipedia.org/wiki/Cosmos_bipinnatus
+    ["Daffodil", ["Daffodil", "Narcissus", "https://w.wiki/NYoV"]], // https://en.wikipedia.org/wiki/Narcissus
+    ["Daisy", ["Daisy", "Bellis perennis", "https://w.wiki/DbXP"]], // https://en.wikipedia.org/wiki/Bellis_perennis
+    ["DesertRose", ["Desert Rose", "Adenium obesum", "https://w.wiki/NYpA"]], // https://en.wikipedia.org/wiki/Adenium_obesum
+    ["Foxglove", ["Foxglove", "Digitalis purpurea", "https://w.wiki/BZzz"]], // https://en.wikipedia.org/wiki/Digitalis_purpurea
+    ["Gardenia", ["Gardenia", "Gardenia", "https://w.wiki/MUUc"]], // https://en.wikipedia.org/wiki/Gardenia
+    ["Geranium", ["Geranium", "Pelargonium", "https://w.wiki/FZNA"]], // https://en.wikipedia.org/wiki/Pelargonium
+    ["Gerbera", ["Gerbera", "Gerbera", "https://w.wiki/Ei5n"]], // https://en.wikipedia.org/wiki/Gerbera
+    ["Hibiscus", ["Hibiscus", "Hibiscus", "https://w.wiki/3jpP"]], // https://en.wikipedia.org/wiki/Hibiscus
+    ["Hyacinth", ["Hyacinth", "Hyacinthus", "https://w.wiki/NYpP"]], // https://en.wikipedia.org/wiki/Hyacinth_(plant)
+    ["Hydrangea", ["Hydrangea", "Hydrangea", "https://w.wiki/3jzX"]], // https://en.wikipedia.org/wiki/Hydrangea
+    ["Iris", ["Iris", "Iris", "https://w.wiki/8W8V"]], // https://en.wikipedia.org/wiki/Iris_(plant)
+    ["Jasmine", ["Jasmine", "Jasminum", "https://w.wiki/7y5n"]], // https://en.wikipedia.org/wiki/Jasmine
+    ["Lavender", ["Lavender", "Lavandula", "https://w.wiki/NYmf"]], // https://en.wikipedia.org/wiki/Lavender
+    ["Lily", ["Lily", "Lilium", "https://w.wiki/NYnm"]], // https://en.wikipedia.org/wiki/Lilium
+    ["Lotus", ["Lotus", "Nelumbo nucifera", "https://w.wiki/7EY2"]], // https://en.wikipedia.org/wiki/Nelumbo_nucifera
+    ["Magnolia", ["Magnolia", "Magnolia", "https://w.wiki/7vUU"]], // https://en.wikipedia.org/wiki/Magnolia
+    ["Marigold", ["Marigold", "Tagetes", "https://w.wiki/62tz"]], // https://en.wikipedia.org/wiki/Tagetes
+    ["MexicanHeather", ["Mexican Heather", "Cuphea hyssopifolia", "https://w.wiki/Knbn"]], // https://en.wikipedia.org/wiki/Cuphea_hyssopifolia
+    ["Morning Glory", ["Morning Glory", "Ipomoea", "https://w.wiki/AVWo"]], // https://en.wikipedia.org/wiki/Morning_glory
+    ["Orchid", ["Orchid", "Orchidaceae", "https://w.wiki/4XAN"]], // https://en.wikipedia.org/wiki/Orchidaceae
+    ["Pansy", ["Pansy", "Viola tricolor var. hortensis", "https://w.wiki/NYo4"]], // https://en.wikipedia.org/wiki/Pansy
+    ["Peony", ["Peony", "Paeonia", "https://w.wiki/3qcT"]], // https://en.wikipedia.org/wiki/Peony
+    ["Petunia", ["Petunia", "Petunia", "https://w.wiki/NYn$"]], // https://en.wikipedia.org/wiki/Petunia
+    ["Poppy", ["Poppy", "Papaver", "https://w.wiki/3om5"]], // https://en.wikipedia.org/wiki/Poppy
+    ["Rose", ["Rose", "Rosa", "https://w.wiki/3oBw"]], // https://en.wikipedia.org/wiki/Rose
+    ["Snapdragon", ["Snapdragon", "Antirrhinum", "https://w.wiki/NYoh"]], // https://en.wikipedia.org/wiki/Antirrhinum
+    ["Sunflower", ["Sunflower", "Helianthus annuus", "https://w.wiki/NYme"]], // https://en.wikipedia.org/wiki/Sunflower
+    ["Tulip", ["Tulip", "Tulipa", "https://w.wiki/6ASZ"]], // https://en.wikipedia.org/wiki/Tulip
+    ["Violet", ["Violet", "Viola", "https://w.wiki/7soi"]], // https://en.wikipedia.org/wiki/Viola_(plant)
+    ["Wisteria", ["Wisteria", "Wisteria", "https://w.wiki/DmMS"]], // https://en.wikipedia.org/wiki/Wisteria
+    ["Yarrow", ["Yarrow", "Achillea millefolium", "https://w.wiki/AVPY"]], // https://en.wikipedia.org/wiki/Achillea_millefolium
+    ["Zinnia", ["Zinnia", "Zinnia", "https://w.wiki/FiPo"]], // https://en.wikipedia.org/wiki/Zinnia
 ];
 
 Common_Fruits = [
-  ["Tomato",        ["Tomato", "Solanum lycopersicum", "https://w.wiki/3k7k"]], //https://en.wikipedia.org/wiki/Tomato
-  ["Apple",         ["Apple", "Malus domestica", "https://w.wiki/jkk"]], //https://en.wikipedia.org/wiki/Apple
-  ["Pear",          ["Pear", "Pyrus", "https://en.wikipedia.org/wiki/Pear"]],
-  ["Peach",         ["Peach", "Prunus persica", "https://en.wikipedia.org/wiki/Peach"]],
-  ["Plum",          ["Plum", "Prunus domestica", "https://en.wikipedia.org/wiki/Plum"]],
-  ["Cherry", ["Cherry", "Prunus avium", "https://en.wikipedia.org/wiki/Cherry"]],
-  ["Apricot", ["Apricot", "Prunus armeniaca", "https://en.wikipedia.org/wiki/Apricot"]],
-  ["Nectarine", ["Nectarine", "Prunus persica var. nucipersica", "https://en.wikipedia.org/wiki/Nectarine"]],
-  ["Orange", ["Orange", "Citrus × sinensis", "https://en.wikipedia.org/wiki/Orange_(fruit)"]],
-  ["Lemon", ["Lemon", "Citrus limon", "https://w.wiki/3qEt"]], //https://en.wikipedia.org/wiki/Lemon
-  ["Lime", ["Lime", "Citrus aurantiifolia", "https://w.wiki/5Xmp"]], //https://en.wikipedia.org/wiki/Lime_(fruit)
-  ["Mandarin", ["Mandarin", "Citrus reticulata", "https://en.wikipedia.org/wiki/Mandarin_orange"]],
-  ["Grapefruit", ["Grapefruit", "Citrus × paradisi", "https://en.wikipedia.org/wiki/Grapefruit"]],
-  ["Mango", ["Mango", "Mangifera indica", "https://en.wikipedia.org/wiki/Mango"]],
-  ["Avocado", ["Avocado", "Persea americana", "https://en.wikipedia.org/wiki/Avocado"]],
-  ["Olive", ["Olive", "Olea europaea", "https://en.wikipedia.org/wiki/Olive"]],
-  ["Fig", ["Fig", "Ficus carica", "https://en.wikipedia.org/wiki/Common_fig"]],
-  ["Pomegranate", ["Pomegranate", "Punica granatum", "https://en.wikipedia.org/wiki/Pomegranate"]],
-  ["Mulberry", ["Mulberry", "Morus", "https://en.wikipedia.org/wiki/Mulberry"]],
-  ["Persimmon", ["Persimmon", "Diospyros kaki", "https://en.wikipedia.org/wiki/Persimmon"]],
-  ["Guava", ["Guava", "Psidium guajava", "https://en.wikipedia.org/wiki/Guava"]],
-  ["Lychee", ["Lychee", "Litchi chinensis", "https://en.wikipedia.org/wiki/Lychee"]],
-  ["Longan", ["Longan", "Dimocarpus longan", "https://en.wikipedia.org/wiki/Longan"]],
-  ["Loquat", ["Loquat", "Eriobotrya japonica", "https://en.wikipedia.org/wiki/Loquat"]],
-  ["Quince", ["Quince", "Cydonia oblonga", "https://en.wikipedia.org/wiki/Quince"]],
-  ["Jackfruit", ["Jackfruit", "Artocarpus heterophyllus", "https://en.wikipedia.org/wiki/Jackfruit"]],
-  ["Breadfruit", ["Breadfruit", "Artocarpus altilis", "https://en.wikipedia.org/wiki/Breadfruit"]],
-  ["Starfruit", ["Starfruit", "Averrhoa carambola", "https://en.wikipedia.org/wiki/Carambola"]],
-  ["Durian", ["Durian", "Durio zibethinus", "https://en.wikipedia.org/wiki/Durian"]],
-  ["Coconut", ["Coconut", "Cocos nucifera", "https://en.wikipedia.org/wiki/Coconut"]],
-  ["Macadamia", ["Macadamia", "Macadamia integrifolia", "https://en.wikipedia.org/wiki/Macadamia"]],
-  ["Almond", ["Almond", "Prunus dulcis", "https://en.wikipedia.org/wiki/Almond"]],
-  ["Cashew", ["Cashew", "Anacardium occidentale", "https://en.wikipedia.org/wiki/Cashew"]],
-  ["Pawpaw", ["Pawpaw", "Asimina triloba", "https://en.wikipedia.org/wiki/Asimina_triloba"]],
-  ["Soursop", ["Soursop", "Annona muricata", "https://en.wikipedia.org/wiki/Soursop"]],
-  ["Custard Apple", ["Custard Apple", "Annona reticulata", "https://en.wikipedia.org/wiki/Annona_reticulata"]],
-  ["Sapodilla", ["Sapodilla", "Manilkara zapota", "https://en.wikipedia.org/wiki/Manilkara_zapota"]],
-  ["Tamarind", ["Tamarind", "Tamarindus indica", "https://en.wikipedia.org/wiki/Tamarind"]],
-  ["Date Palm", ["Date Palm", "Phoenix dactylifera", "https://en.wikipedia.org/wiki/Date_palm"]],
-  ["Kumquat", ["Kumquat", "Citrus japonica", "https://en.wikipedia.org/wiki/Kumquat"]],
-  ["Feijoa", ["Feijoa", "Acca sellowiana", "https://en.wikipedia.org/wiki/Feijoa"]],
-  ["Jujube", ["Jujube", "Ziziphus jujuba", "https://en.wikipedia.org/wiki/Jujube"]],
-  ["Black Sapote", ["Black Sapote", "Diospyros nigra", "https://en.wikipedia.org/wiki/Black_sapote"]],
-  ["White Sapote", ["White Sapote", "Casimiroa edulis", "https://en.wikipedia.org/wiki/Casimiroa_edulis"]],
-  ["Finger Lime", ["Finger Lime", "Citrus australasica", "https://en.wikipedia.org/wiki/Citrus_australasica"]],
-  ["Dragon Fruit", ["Dragon Fruit", "Selenicereus undatus", "https://en.wikipedia.org/wiki/Pitaya"]],
-  ["Papaya", ["Papaya", "Carica papaya", "https://en.wikipedia.org/wiki/Papaya"]],
-  ["Banana", ["Banana", "Musa", "https://en.wikipedia.org/wiki/Banana"]],
-  ["Coffee", ["Coffee", "Coffea arabica", "https://en.wikipedia.org/wiki/Coffea_arabica"]],
-  ["Cacao", ["Cacao", "Theobroma cacao", "https://en.wikipedia.org/wiki/Theobroma_cacao"]],
-  ["Tea", ["Tea", "Camellia sinensis", "https://en.wikipedia.org/wiki/Tea_plant"]],
-  ["Pepper", ["Pepper", "Piper nigrum", "https://en.wikipedia.org/wiki/Black_pepper"]],
-  ["Cinnamon", ["Cinnamon", "Cinnamomum verum", "https://en.wikipedia.org/wiki/Cinnamomum_verum"]],
-  ["Clove", ["Clove", "Syzygium aromaticum", "https://en.wikipedia.org/wiki/Clove"]],
-  ["Nutmeg", ["Nutmeg", "Myristica fragrans", "https://en.wikipedia.org/wiki/Nutmeg"]],
-  ["Allspice", ["Allspice", "Pimenta dioica", "https://en.wikipedia.org/wiki/Allspice"]],
-  ["Bay Laurel", ["Bay Laurel", "Laurus nobilis", "https://en.wikipedia.org/wiki/Laurus_nobilis"]],
-  ["Curry Leaf", ["Curry Leaf", "Murraya koenigii", "https://en.wikipedia.org/wiki/Curry_tree"]],
-  ["Tamarillo", ["Tamarillo", "Solanum betaceum", "https://w.wiki/AqZ6"]], //https://en.wikipedia.org/wiki/Tamarillo
-  ["MiracleBerry", ["Miracle Berry", "Synsepalum dulcificum", "https://w.wiki/8syB"]], //https://en.wikipedia.org/wiki/Synsepalum_dulcificum
-  ["Strawberry", ["Strawberry", "Fragaria × ananassa", "https://w.wiki/3hMQ"]] //https://en.wikipedia.org/wiki/Strawberry
+    ["Allspice", ["Allspice", "Pimenta dioica", "https://en.wikipedia.org/wiki/Allspice"]],
+    ["Almond", ["Almond", "Prunus dulcis", "https://en.wikipedia.org/wiki/Almond"]],
+    ["Apple",         ["Apple", "Malus domestica", "https://w.wiki/jkk"]], //https://en.wikipedia.org/wiki/Apple
+    ["Apricot", ["Apricot", "Prunus armeniaca", "https://en.wikipedia.org/wiki/Apricot"]],
+    ["Avocado", ["Avocado", "Persea americana", "https://en.wikipedia.org/wiki/Avocado"]],
+    ["Banana", ["Banana", "Musa", "https://en.wikipedia.org/wiki/Banana"]],
+    ["Bay Laurel", ["Bay Laurel", "Laurus nobilis", "https://en.wikipedia.org/wiki/Laurus_nobilis"]],
+    ["Black Sapote", ["Black Sapote", "Diospyros nigra", "https://en.wikipedia.org/wiki/Black_sapote"]],
+    ["Breadfruit", ["Breadfruit", "Artocarpus altilis", "https://en.wikipedia.org/wiki/Breadfruit"]],
+    ["Cacao", ["Cacao", "Theobroma cacao", "https://en.wikipedia.org/wiki/Theobroma_cacao"]],
+    ["Cashew", ["Cashew", "Anacardium occidentale", "https://en.wikipedia.org/wiki/Cashew"]],
+    ["Cherry", ["Cherry", "Prunus avium", "https://en.wikipedia.org/wiki/Cherry"]],
+    ["Cinnamon", ["Cinnamon", "Cinnamomum verum", "https://en.wikipedia.org/wiki/Cinnamomum_verum"]],
+    ["Clove", ["Clove", "Syzygium aromaticum", "https://en.wikipedia.org/wiki/Clove"]],
+    ["Coconut", ["Coconut", "Cocos nucifera", "https://en.wikipedia.org/wiki/Coconut"]],
+    ["Coffee", ["Coffee", "Coffea arabica", "https://en.wikipedia.org/wiki/Coffea_arabica"]],
+    ["Curry Leaf", ["Curry Leaf", "Murraya koenigii", "https://en.wikipedia.org/wiki/Curry_tree"]],
+    ["Custard Apple", ["Custard Apple", "Annona reticulata", "https://en.wikipedia.org/wiki/Annona_reticulata"]],
+    ["Date Palm", ["Date Palm", "Phoenix dactylifera", "https://en.wikipedia.org/wiki/Date_palm"]],
+    ["Dragon Fruit", ["Dragon Fruit", "Selenicereus undatus", "https://en.wikipedia.org/wiki/Pitaya"]],
+    ["Durian", ["Durian", "Durio zibethinus", "https://en.wikipedia.org/wiki/Durian"]],
+    ["Feijoa", ["Feijoa", "Acca sellowiana", "https://en.wikipedia.org/wiki/Feijoa"]],
+    ["Fig", ["Fig", "Ficus carica", "https://en.wikipedia.org/wiki/Common_fig"]],
+    ["Finger Lime", ["Finger Lime", "Citrus australasica", "https://en.wikipedia.org/wiki/Citrus_australasica"]],
+    ["Grapefruit", ["Grapefruit", "Citrus × paradisi", "https://en.wikipedia.org/wiki/Grapefruit"]],
+    ["Guava", ["Guava", "Psidium guajava", "https://en.wikipedia.org/wiki/Guava"]],
+    ["Jackfruit", ["Jackfruit", "Artocarpus heterophyllus", "https://en.wikipedia.org/wiki/Jackfruit"]],
+    ["Jujube", ["Jujube", "Ziziphus jujuba", "https://en.wikipedia.org/wiki/Jujube"]],
+    ["Kumquat", ["Kumquat", "Citrus japonica", "https://en.wikipedia.org/wiki/Kumquat"]],
+    ["Lemon", ["Lemon", "Citrus limon", "https://w.wiki/3qEt"]], //https://en.wikipedia.org/wiki/Lemon
+    ["Lime", ["Lime", "Citrus aurantiifolia", "https://w.wiki/5Xmp"]], //https://en.wikipedia.org/wiki/Lime_(fruit)
+    ["Longan", ["Longan", "Dimocarpus longan", "https://en.wikipedia.org/wiki/Longan"]],
+    ["Loquat", ["Loquat", "Eriobotrya japonica", "https://en.wikipedia.org/wiki/Loquat"]],
+    ["Lychee", ["Lychee", "Litchi chinensis", "https://en.wikipedia.org/wiki/Lychee"]],
+    ["Macadamia", ["Macadamia", "Macadamia integrifolia", "https://en.wikipedia.org/wiki/Macadamia"]],
+    ["Mandarin", ["Mandarin", "Citrus reticulata", "https://en.wikipedia.org/wiki/Mandarin_orange"]],
+    ["Mango", ["Mango", "Mangifera indica", "https://en.wikipedia.org/wiki/Mango"]],
+    ["MiracleBerry", ["Miracle Berry", "Synsepalum dulcificum", "https://w.wiki/8syB"]], //https://en.wikipedia.org/wiki/Synsepalum_dulcificum
+    ["Mulberry", ["Mulberry", "Morus", "https://en.wikipedia.org/wiki/Mulberry"]],
+    ["Nectarine", ["Nectarine", "Prunus persica var. nucipersica", "https://en.wikipedia.org/wiki/Nectarine"]],
+    ["Nutmeg", ["Nutmeg", "Myristica fragrans", "https://en.wikipedia.org/wiki/Nutmeg"]],
+    ["Olive", ["Olive", "Olea europaea", "https://en.wikipedia.org/wiki/Olive"]],
+    ["Orange", ["Orange", "Citrus × sinensis", "https://en.wikipedia.org/wiki/Orange_(fruit)"]],
+    ["Papaya", ["Papaya", "Carica papaya", "https://en.wikipedia.org/wiki/Papaya"]],
+    ["Pawpaw", ["Pawpaw", "Asimina triloba", "https://en.wikipedia.org/wiki/Asimina_triloba"]],
+    ["Peach",         ["Peach", "Prunus persica", "https://en.wikipedia.org/wiki/Peach"]],
+    ["Pear",          ["Pear", "Pyrus", "https://en.wikipedia.org/wiki/Pear"]],
+    ["Pepper", ["Pepper", "Piper nigrum", "https://en.wikipedia.org/wiki/Black_pepper"]],
+    ["Persimmon", ["Persimmon", "Diospyros kaki", "https://en.wikipedia.org/wiki/Persimmon"]],
+    ["Plum",          ["Plum", "Prunus domestica", "https://en.wikipedia.org/wiki/Plum"]],
+    ["Pomegranate", ["Pomegranate", "Punica granatum", "https://en.wikipedia.org/wiki/Pomegranate"]],
+    ["Quince", ["Quince", "Cydonia oblonga", "https://en.wikipedia.org/wiki/Quince"]],
+    ["Sapodilla", ["Sapodilla", "Manilkara zapota", "https://en.wikipedia.org/wiki/Manilkara_zapota"]],
+    ["Soursop", ["Soursop", "Annona muricata", "https://en.wikipedia.org/wiki/Soursop"]],
+    ["Starfruit", ["Starfruit", "Averrhoa carambola", "https://en.wikipedia.org/wiki/Carambola"]],
+    ["Strawberry", ["Strawberry", "Fragaria × ananassa", "https://w.wiki/3hMQ"]], //https://en.wikipedia.org/wiki/Strawberry
+    ["Tamarillo", ["Tamarillo", "Solanum betaceum", "https://w.wiki/AqZ6"]], //https://en.wikipedia.org/wiki/Tamarillo
+    ["Tamarind", ["Tamarind", "Tamarindus indica", "https://en.wikipedia.org/wiki/Tamarind"]],
+    ["Tea", ["Tea", "Camellia sinensis", "https://en.wikipedia.org/wiki/Tea_plant"]],
+    ["Tomato",        ["Tomato", "Solanum lycopersicum", "https://w.wiki/3k7k"]], //https://en.wikipedia.org/wiki/Tomato
+    ["White Sapote", ["White Sapote", "Casimiroa edulis", "https://en.wikipedia.org/wiki/Casimiroa_edulis"]]
 ];
 
 Text_Color_Sets = [
@@ -340,7 +326,7 @@ Text_Color_Sets = [
   ["Blue_Inverted", ["#FFFFFF","#246BCE"]],
   ["Blue_Gold", ["#D4AF37","#246BCE"]]];
 
-Font_Short_List = 
+Font_Short_List =
   [
   ["Henny_Penny", "Henny Penny:style=Regular"],
   ["Rouge_Script", "Rouge Script:style=Regular"],
@@ -352,32 +338,31 @@ Font_Short_List =
   ["NTR", "NTR:style=Regular"],
   ["Rubik", "Rubik"],
   ["HarmonyOS", "HarmonyOS Sans SC:style=Regular"],
-  ["HarmonyOS_Bold", "HarmonyOS Sans SC:style=Bold"],
-  ["HarmonyOS_Italic", "HarmonyOS Sans SC:style=Italic"],
-  ["HarmonyOS_Bold_Italic", "HarmonyOS Sans SC:style=Bold Italic"]  
   ];
 
-function DictGet(list, key, default = undef, alert=false) = 
-  let(matchResults = search([key],list,1),
+function DictGet(list, key, default = undef, alert=false) =
+  let(
+    //match  matchResults = [21], no match matchResults = [[]]
+    matchResults = search([key], list,1),
     matchIndex = is_list(matchResults) && len(matchResults)==1 && is_num(matchResults[0]) ? matchResults[0]: undef,
-    alertMessage = str("count not find key in list key:'", key, "' matchResults:'", matchResults, "' matchIndex:'", matchIndex),
-    matchValue = is_num(matchIndex) ? list[matchIndex] : [-1, default],
-    x = !alert && is_undef(matchValue) ? echo(alertMessage) : 1)
-    assert(!alert || !is_undef(matchValue), alertMessage)
+    found_match = is_num(matchIndex),
+    alertMessage = str("could not find key in list key:'", key, "' matchResults:'", matchResults, "' matchIndex:'", matchIndex),
+    matchValue = found_match ? list[matchIndex] : [-1, default])
+    assert(!alert || found_match, alertMessage)
       matchValue[1];
 
 // Gets one value base on another.
 // if user_value = 0 use the base value
 // user_value > 0 use that value
 // user_value < 0 base_value/abs(user_value) (i.e. -3 is 1/3 the base_value)
-function get_related_value(user_value, base_value, default_value, max_value) = 
+function get_related_value(user_value, base_value, default_value, max_value) =
   let(
       default = is_undef(default_value) ? base_value : default_value,
       calculated = user_value == 0 ? default :
       user_value < 0 ? base_value/abs(user_value) : user_value)
       is_undef(max_value) ? calculated : min(calculated, max_value);
-      
-      
+
+
 function get_line_settings(
     customise,
     text,
@@ -417,7 +402,7 @@ function get_line_settings(
     _color,
     tm];
 
-function calculate_line_positions(line_settings, text_clearance) = 
+function calculate_line_positions(line_settings, text_clearance) =
   let(
       //bottom
     line4_size = line_settings[3][ienabled] ? [
@@ -432,7 +417,7 @@ function calculate_line_positions(line_settings, text_clearance) =
     line4_top = line_settings[3][ienabled] ? [
       line4_midline.x-line4_size.x/2,
       line4_midline.y+line4_size.y/2] : [0,0],
-      
+
     //middle bottom
     line3_size = line_settings[2][ienabled] ? [
       line_settings[2][itext_metrix].x+line_settings[2][itext_boldness]+text_clearance*2,
@@ -446,7 +431,7 @@ function calculate_line_positions(line_settings, text_clearance) =
     line3_top = line_settings[2][ienabled] ? [
       line3_midline.x-line3_size.x/2,
       line3_midline.y+line3_size.y/2] : line4_top,
-    
+
     //middle top
     line2_size = line_settings[1][ienabled] ? [
       line_settings[1][itext_metrix].x+line_settings[1][itext_boldness]+text_clearance*2,
@@ -460,7 +445,7 @@ function calculate_line_positions(line_settings, text_clearance) =
     line2_top = line_settings[1][ienabled] ? [
       line2_midline.x-line2_size.x/2,
       line2_midline.y+line2_size.y/2] : line3_top,
-      
+
     //top
     line1_size = line_settings[0][ienabled] ? [
       line_settings[0][itext_metrix].x+line_settings[0][itext_boldness]+text_clearance*2,
@@ -468,10 +453,10 @@ function calculate_line_positions(line_settings, text_clearance) =
     line1_midline = line_settings[0][ienabled] ? [
       line_settings[0][itext_position].x,
       line_settings[0][itext_position].y + line1_size.y/2 + line2_top.y] : line2_midline,
-    line1_bottom = line_settings[1][ienabled] ? [
+    line1_bottom = line_settings[0][ienabled] ? [
       line1_midline.x-line1_size.x/2,
-      line1_midline.y+line1_size.y/2] : line2_top,
-    line1_top = line_settings[1][ienabled] ? [
+      line1_midline.y-line1_size.y/2] : line2_top,
+    line1_top = line_settings[0][ienabled] ? [
       line1_midline.x-line1_size.x/2,
       line1_midline.y+line1_size.y/2] : line2_top
   )
@@ -483,16 +468,16 @@ function calculate_line_positions(line_settings, text_clearance) =
   ];
 
 // String functions found here https://github.com/thehans/funcutils/blob/master/string.scad
-function join(l,delimiter="") = 
+function join(l,delimiter="") =
   let(s = len(l), d = delimiter,
       jb = function (b,e) let(s = e-b, m = floor(b+s/2)) // join binary
         s > 2 ? str(jb(b,m), jb(m,e)) : s == 2 ? str(l[b],l[b+1]) : l[b],
       jd = function (b,e) let(s = e-b, m = floor(b+s/2))  // join delimiter
         s > 2 ? str(jd(b,m), d, jd(m,e)) : s == 2 ? str(l[b],d,l[b+1]) : l[b])
   s > 0 ? (d=="" ? jb(0,s) : jd(0,s)) : "";
-    
+
 function substr(s,b,e) = let(e=is_undef(e) || e > len(s) ? len(s) : e) (b==e) ? "" : join([for(i=[b:1:e-1]) s[i] ]);
-  
+
 function strip_font_style(font) =
     let(pos = search(":style=", font))
     len(pos) > 0
@@ -516,7 +501,7 @@ function build_font(
     style == ""
         ? base
         : str(base, ":style=", style);
-        
+
 function overall_text_size(lines, minsize) =
     let(
         valid = [for (l = lines) if (l[ipos_size].x > 0 && l[ipos_size].y > 0) l],
@@ -528,18 +513,13 @@ function overall_text_size(lines, minsize) =
         size =     len(valid) == 0
           ? [0,0]
           : [max(rights) - min(lefts), max(tops) - min(bottoms)]
-          
+
     )
     [max(size.x, minsize.x), max(size.y, minsize.y)];
- 
+
 colour_set = DictGet(Text_Color_Sets, Text_Color_Set, default = [Text_Color, Backer_Color]);
 
-text_values = let( 
-    select_plant_name =
-        Common_Herb != "custom" ? Common_Herb
-      : Common_Flower != "custom"? Common_Flower
-      : Common_Fruit != "custom"? Common_Fruit
-      : "custom",
+text_values = let(
     knownHerb = DictGet(Common_Herbs, Common_Herb),
     knownFruit = DictGet(Common_Fruits, Common_Fruit),
     knownFlower = DictGet(Common_Flowers, Common_Flower),
@@ -548,21 +528,21 @@ text_values = let(
               : knownFruit != undef ? knownFruit
               : knownFlower != undef ? knownFlower
               : [Text_Line_1, Text_Line_2, qr_value],
-    result = (selected[0] == undef || selected[0] == "") 
-        && (selected[1] == undef || selected[1] == "") 
+    result = (selected[0] == undef || selected[0] == "")
+        && (selected[1] == undef || selected[1] == "")
         && (selected[2] == undef || selected[2] == "") ? fallback_tomato : selected
-  ) 
+  )
   [
     result[0],
     result[1],
-    Text_Line_3, 
-    Text_Line_4, 
+    Text_Line_3,
+    Text_Line_4,
     result[2]
   ];
-  
-qr_enabled_calculated = (is_undef(text_values[text_values_url]) || text_values[text_values_url]  == "") ? "disabled" : qr_enabled;
 
-Text_Font = len(Text_Font_Full_List) > 0 
+qr_position_calculated = (is_undef(text_values[text_values_url]) || text_values[text_values_url]  == "") ? "disabled" : qr_position;
+
+Text_Font = len(Text_Font_Full_List) > 0
       ? Text_Font_Full_List
       : DictGet(Font_Short_List, Text_Font_Short_List, alert=true);
 
@@ -583,7 +563,7 @@ topper_settings = [
     default_spacing = Text_Spacing,
     default_layers = Text_Layers,
     default_color = colour_set[icolor_text]),
-    
+
   get_line_settings(
     customise = true,
     text = text_values[text_values_line2],
@@ -599,8 +579,8 @@ topper_settings = [
     default_boldness = Text_Boldness,
     default_spacing = Text_Spacing,
     default_layers = Text_Layers,
-    default_color = colour_set[icolor_text]), 
- 
+    default_color = colour_set[icolor_text]),
+
   get_line_settings(
     customise = true,
     text = text_values[text_values_line3],
@@ -616,8 +596,8 @@ topper_settings = [
     default_boldness = Text_Boldness,
     default_spacing = Text_Spacing,
     default_layers = Text_Layers,
-    default_color = colour_set[icolor_text]), 
-    
+    default_color = colour_set[icolor_text]),
+
    get_line_settings(
     customise = true,
     text = text_values[text_values_line4],
@@ -633,52 +613,49 @@ topper_settings = [
     default_boldness = Text_Boldness,
     default_spacing = Text_Spacing,
     default_layers = Text_Layers,
-    default_color = colour_set[icolor_text]), 
+    default_color = colour_set[icolor_text]),
   ];
-  
+
 line_positions = calculate_line_positions(topper_settings, Text_Clearance);
 label_text_size = overall_text_size(line_positions, Backer_Min_Size);
 
 //qr_size_calculated = label_text_size.y >= qr_size+Text_Clearance*2 ? qr_size : label_text_size.y - Text_Clearance*2;
 qr_size_calculated = max(label_text_size.y - Text_Clearance*2, qr_size);
 
-label_size = qr_enabled_calculated == "right" ? [label_text_size.x + qr_size_calculated + Text_Clearance*3, max(label_text_size.y, qr_size_calculated+ Text_Clearance*3)] 
-              : qr_enabled_calculated == "below" ? [label_text_size.x + Text_Clearance*3, label_text_size.y + qr_size_calculated + Text_Clearance*3] 
+label_size = qr_position_calculated == "right" ? [label_text_size.x + qr_size_calculated + Text_Clearance*3, max(label_text_size.y, qr_size_calculated+ Text_Clearance*3)]
+              : qr_position_calculated == "below" ? [label_text_size.x + Text_Clearance*3, label_text_size.y + qr_size_calculated + Text_Clearance*3]
               : [label_text_size.x + Text_Clearance, label_text_size.y + Text_Clearance] ;
 
-echo(line1_settings = topper_settings[0]);
-echo(line2_settings = topper_settings[1]);
-echo(line3_settings = topper_settings[2]);
-echo(line4_settings = topper_settings[3]);
-echo(line1 = line_positions[0]);
-echo(line2 = line_positions[1]);
-echo(line3 = line_positions[2]);
-echo(line4 = line_positions[3]);
-echo(label_size = label_size, label_text_size=label_text_size, qr_size=qr_size, qr_size_calculated=qr_size_calculated);
-
-
-sign_height_for_posts= line_positions[0][ipos_size].y + line_positions[1][ipos_size].y + line_positions[2][ipos_size].y;
-  
-calculated_post_length = get_related_value(Post_Length, sign_height_for_posts, 0);
-model_position = 
+calculated_post_length = get_related_value(Post_Length, label_size.y, 0);
+model_position =
   [Model_Position.x,
-  Model_Position.y, 
+  Model_Position.y,
   0];
 
-echo(sign_height_for_posts=sign_height_for_posts, model_position=model_position, calculated_post_length=calculated_post_length);  
+if(show_debug){
+    echo(line1_settings = topper_settings[0]);
+    echo(line2_settings = topper_settings[1]);
+    echo(line3_settings = topper_settings[2]);
+    echo(line4_settings = topper_settings[3]);
+    echo(line1 = line_positions[0]);
+    echo(line2 = line_positions[1]);
+    echo(line3 = line_positions[2]);
+    echo(line4 = line_positions[3]);
+    echo(label_size = label_size, label_text_size=label_text_size, qr_size=qr_size, qr_size_calculated=qr_size_calculated);
+    echo(render_part=render_part, model_position=model_position, calculated_post_length=calculated_post_length);
+}
 
 if(Enable_Font_Short_List_Demo){
   font_demo();
 } else {
-//+
   translate(model_position)
   if(render_part == "back"){
     back_layer();
   } else if(render_part == "front"){
     front_layer();
   } else if(render_part == "combineddown" || render_part == "combinedup"){
-    rotate(render_part == "combinedup" || $preview ? [0,0,0] : [0,180,0])
-    translate(render_part == "combinedup" || $preview ? [0,0,0] : [0,0,Backer_Layers*Extrusion_Layer_Height-Text_Layers])
+    translate(render_part == "combinedup" ? [0,0,0] : [0,0,Backer_Layers*Extrusion_Layer_Height])
+    rotate(render_part == "combinedup" ? [0,0,0] : [0,180,0])
     union(){
       difference(){
         back_layer();
@@ -693,54 +670,57 @@ if(Enable_Font_Short_List_Demo){
       translate([0,0,Backer_Layers*Extrusion_Layer_Height-fudge_factor])
       front_layer();
       back_layer();
-    }  
+    }
   }
 }
 
 module front_layer(){
-  translate( qr_enabled_calculated == "right"  ? [-(qr_size_calculated)/2 - Text_Clearance, label_size.y/2-label_text_size.y/2, 0] 
-            : qr_enabled_calculated == "below" ? [0, qr_size_calculated + Text_Clearance*2, 0] 
+  translate( qr_position_calculated == "right"  ? [-(qr_size_calculated)/2 - Text_Clearance, label_size.y/2-label_text_size.y/2, 0]
+            : qr_position_calculated == "below" ? [0, qr_size_calculated + Text_Clearance*2, 0]
             : [0,0,0])
   union(){
     for (i=[0:len(topper_settings)-1]) {
       let(
         line = topper_settings[i],
         line_position = line_positions[i])
-       
+
         translate([line[itext_position].x,line_position[ipos_midline].y,0])
         if (line[ienabled]) {
             layered_text(
               text=line[itext], font=line[itext_font], size=line[itext_size], spacing=line[itext_spacing],
               valign="center",
-              top_layer_thickness=line[itext_layers]*Extrusion_Layer_Height, 
-              top_layer_offset=line[itext_boldness], 
+              top_layer_thickness=line[itext_layers]*Extrusion_Layer_Height,
+              top_layer_offset=line[itext_boldness],
               top_layer_color=line[icolor],
-              bottom_layer_thickness=0, 
-              bottom_layer_offset=0, 
+              bottom_layer_thickness=0,
+              bottom_layer_offset=0,
               bottom_layer_color=colour_set[icolor_backer]);
-              
-            //#cube(size = [line_position[ipos_size].x,line_position[ipos_size].y,2], center=true);
-        }    
+
+            if(show_debug){
+                #cube(size = [line_position[ipos_size].x,line_position[ipos_size].y,2], center=true);
+            }
+        }
     }
 
-    //#translate([-label_text_size.x/2,0,0])
-    //cube(size = [label_text_size.x,label_text_size.y,1], center=false);
+    if(show_debug){
+        #translate([-label_text_size.x/2,0,0])
+        cube(size = [label_text_size.x,label_text_size.y,1], center=false);
+    }
   }
-  
+
   color(Text_Color)
   translate([0, label_size.y/2, 0])
   border(
     style = Backer_Style,
     size = [label_size.x, label_size.y, Text_Layers*Extrusion_Layer_Height],
     border_size = Backer_Color_Border);
-   
-  if(qr_enabled_calculated != "disabled") 
+
+  if(qr_position_calculated != "disabled")
   {
-    echo("qr", url=text_values[text_values_url], thickness=Text_Layers*Extrusion_Layer_Height, mask_pattern=mask_pattern, error_correction=error_correction, encoding=encoding);
-    translate( qr_enabled_calculated == "right"  ? [label_text_size.x/2, label_size.y/2, 0] 
-          : qr_enabled_calculated == "below" ? [0, qr_size_calculated/2+Text_Clearance, 0] 
+    translate( qr_position_calculated == "right"  ? [label_text_size.x/2, label_size.y/2, 0]
+          : qr_position_calculated == "below" ? [0, qr_size_calculated/2+Text_Clearance, 0]
           : [0,0,0])
-        
+
     color(Text_Color)
       qr(text_values[text_values_url], error_correction, qr_size_calculated, qr_size_calculated, Text_Layers*Extrusion_Layer_Height, 1, mask_pattern, encoding);
   }
@@ -751,66 +731,56 @@ module back_layer(){
   translate([0, label_size.y/2, 0]) {
     backer(
       style = Backer_Style,
-      size = [label_size.x, label_size.y, Backer_Layers*Extrusion_Layer_Height], 
+      size = [label_size.x, label_size.y, Backer_Layers*Extrusion_Layer_Height],
       outer_space=Backer_Outer_Border, border_size = Backer_Color_Border);
   }
   // Create posts
   if (calculated_post_length > 0) {
-    sign_width = min(
-      topper_settings[0][ienabled] ? line_positions[0][ipos_size].x : 9999,
-      topper_settings[1][ienabled] ? line_positions[1][ipos_size].x : 9999,
-      topper_settings[2][ienabled] ? line_positions[2][ipos_size].x : 9999)+Post_Spacing*2*Post_Count;
-    post_canvis = (sign_width-Post_Width);
-    post_spacing = post_canvis/(Post_Count-1);
-    lines_height =   
-      (Post_Start_Line == 1 && topper_settings[0][ienabled]) ? line_positions[0][ipos_midline].y
-      : (Post_Start_Line <= 2 && topper_settings[1][ienabled]) ? line_positions[1][ipos_midline].y
-      : (Post_Start_Line <= 3 && topper_settings[2][ienabled]) ? line_positions[2][ipos_midline].y
-      : 0;
-    
+    post_canvas = (label_size.x*.9-Post_Width);
+    post_spacing = Post_Count <=1 ? 0 : post_canvas/(Post_Count-1);
+
     color(colour_set[icolor_backer])
     for (i=[0:Post_Count-1]) {
-        translate([Post_Count == 1 ? 0 : -post_canvis/2+i*post_spacing,lines_height,0])
-        stand(length = lines_height+calculated_post_length, width = Post_Width,thickness=Backer_Layers*Extrusion_Layer_Height);
+        translate([Post_Count == 1 ? 0 : -post_canvas/2+i*post_spacing,0,0])
+        stand(length = calculated_post_length, width = Post_Width,thickness=Backer_Layers*Extrusion_Layer_Height);
     }
   }
 }
 
 module layered_text(
   text, font, size, spacing,
-  top_layer_thickness, 
-  top_layer_offset, 
+  top_layer_thickness,
+  top_layer_offset,
   top_layer_color,
-  middle_layer_thickness = 0, 
-  middle_layer_offset = 0, 
+  middle_layer_thickness = 0,
+  middle_layer_offset = 0,
   middle_layer_color,
-  bottom_layer_thickness = 0, 
-  bottom_layer_offset = 0, 
+  bottom_layer_thickness = 0,
+  bottom_layer_offset = 0,
   bottom_layer_color,
   halign="center",
   valign="bottom"
   ){
-  echo(text=text, font=font, size=size, top_layer_offset=top_layer_offset, middle_layer_offset=middle_layer_offset,  bottom_layer_offset=bottom_layer_offset);
  color(top_layer_color)
-    translate([0,0,bottom_layer_thickness+middle_layer_thickness]) 
+    translate([0,0,bottom_layer_thickness+middle_layer_thickness])
     linear_extrude(top_layer_thickness)
     offset(r=top_layer_offset) {
-    text(text=text, 
+    text(text=text,
       size=size,
       font=font,
       spacing=spacing,
       halign=halign,
       valign=valign);
     }
-  
+
   //Outline
   color(middle_layer_color)
     translate([0,0,bottom_layer_thickness])
     linear_extrude(middle_layer_thickness)
     offset(r=top_layer_offset+middle_layer_offset)
-    text(text=text, 
-      size=size, 
-      font=font, 
+    text(text=text,
+      size=size,
+      font=font,
       spacing=spacing,
       halign=halign,
       valign=valign);
@@ -819,26 +789,25 @@ module layered_text(
   color(bottom_layer_color)
     linear_extrude(bottom_layer_thickness)
     offset(r=top_layer_offset+middle_layer_offset+bottom_layer_offset)
-    text(text=text, 
-      size=size, 
-      font=font, 
+    text(text=text,
+      size=size,
+      font=font,
       spacing=spacing,
       halign=halign,
       valign=valign);
 }
 
 module stand(
-  length = 100, 
+  length = 100,
   width = 10,
   thickness=2)
 {
-  echo("stand", length=length, width=width, thickness=thickness);
   hull(){
     translate([-width/2,-length,0])
-    cube([width,length,thickness]);   
-    
+    cube([width,length,thickness]);
+
     translate([0,-length,0])
-    cylinder(h=thickness, d=width);   
+    cylinder(h=thickness, d=width);
   }
 }
 
@@ -850,14 +819,14 @@ module backer(style, size, radius = undef, outer_space=3, border_size = 1)
     size.x,
     size.y
   ];
-  
+
   translate([0,0,0])
   linear_extrude(size.z)
   offset(r=(outer_space+border_size))
   backer_shape(style, calc_size, radius);
 }
 
-module border(style, size, border_size=1)
+module border(style, size, radius = undef, border_size=1)
 {
   radius = is_undef(radius) ? size.y/8 : radius;
 
@@ -866,7 +835,7 @@ module border(style, size, border_size=1)
     size.y,
     size.z
   ];
-  
+
   translate([0,0,0])
   linear_extrude(calc_size.z)
   difference(){
@@ -890,21 +859,21 @@ radius = is_undef(radius) ? size.y/8 : radius;
     }
   }
 }
-  
+
 
 module font_demo(
-  // minimum angle for a fragment (fragments = 360/fa).  Low is more fragments 
+  // minimum angle for a fragment (fragments = 360/fa).  Low is more fragments
   $fa = 24,
   // minimum size of a fragment.  Low is more fragments
   $fs = 2,
   // number of fragments, overrides $fa and $fs
   $fn = 0){
   text = str(Text_Line_1, " - ", Text_Line_2, " - ", Text_Line_3);
-  
+
   function list_sum_metrix(list, n, pad = 0, i = 0) =
     i >= len(list) || i >= n ? 0 : list[i][itext_metrix].y+pad + list_sum_metrix(list, n, pad,i + 1);
-  
-  function text_lines(list) = [for (x = list) 
+
+  function text_lines(list) = [for (x = list)
   let(
     font_key = x[0],
     font_value = x[1]
@@ -919,19 +888,18 @@ module font_demo(
       default_layers = Text_Layers,
       default_color = colour_set[icolor_text])
     ];
-    
+
   function calculate_line_positions(lines_settings) = [for (i=[0:len(lines_settings)-1])
-  let (
-    line = lines_settings[i],
-    metrix = line[itext_metrix],
-    sum_x = list_sum_metrix(list=lines_settings, n=i, pad=Text_Clearance)
-  ) sum_x ];
-  
+    let (
+        line = lines_settings[i],
+        metrix = line[itext_metrix],
+        sum_x = list_sum_metrix(list=lines_settings, n=i, pad=Text_Clearance)
+    ) sum_x ];
+
   lines_settings = text_lines(Font_Short_List);
   lines_positions = calculate_line_positions(lines_settings);
   total_height = list_sum_metrix(lines_settings, n=len(lines_settings),pad=Text_Clearance);
-  echo(lines_settings = lines_settings);
-  
+
   translate([0,-total_height/2,0])
   for (i=[0:len(lines_settings)-1])
   let(
@@ -943,11 +911,11 @@ module font_demo(
     layered_text(
       text=line[itext], font=line[itext_font], size=line[itext_size], spacing=line[itext_spacing],
       valign="bottom",
-      top_layer_thickness=line[itext_layers]*Extrusion_Layer_Height, 
-      top_layer_offset=line[itext_boldness], 
+      top_layer_thickness=line[itext_layers]*Extrusion_Layer_Height,
+      top_layer_offset=line[itext_boldness],
       top_layer_color=line[icolor],
-      bottom_layer_thickness=Backer_Layers*Extrusion_Layer_Height,  
-      bottom_layer_offset=Text_Clearance, 
+      bottom_layer_thickness=Backer_Layers*Extrusion_Layer_Height,
+      bottom_layer_offset=Text_Clearance,
       bottom_layer_color=colour_set[icolor_backer]);
   }
 }
@@ -1453,9 +1421,9 @@ function do_strjoin(strs, delim, idx=0, acc="") =
 
 function strjoin(strs, delim="") =
 	do_strjoin(strs, delim);
-  
+
   //qr.scad
-  
+
 //
 // Public API
 //
@@ -1468,7 +1436,7 @@ function strjoin(strs, delim="") =
 // mask_pattern: range: 0-7
 // encoding: options: "UTF-8" (Unicode) or "Shift_JIS" (Shift Japanese International Standards)
 // convexity: only affects preview; set this when faces are drawn incorrectly (see [OpenSCAD FAQ](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/FAQ#Why_are_some_parts_(e.g._holes)_of_the_model_not_rendered_correctly?)) [does nothing if thickness=0]
-module qr(message, error_correction="M", width=100, height=100, thickness=1, center=false, mask_pattern=0, encoding="UTF-8", convexity=undef) 
+module qr(message, error_correction="M", width=100, height=100, thickness=1, center=false, mask_pattern=0, encoding="UTF-8", convexity=undef)
     qr_custom(message, error_correction, width, height, thickness, center, mask_pattern, encoding, convexity=convexity) {
         default_module();
         default_position_pattern();
@@ -1583,13 +1551,13 @@ module qr_custom(message, error_correction="M", width=100, height=100, thickness
 // Returns the length of one side of the QR code (in modules/squares).
 // error_correction: options: "L" (~7%), "M" (~15%), "Q" (~25%) or "H" (~30%)
 // encoding: options: "UTF-8" (Unicode) or "Shift_JIS" (Shift Japanese International Standards)
-function qr_size(message, error_correction="M", encoding="UTF-8") = 
+function qr_size(message, error_correction="M", encoding="UTF-8") =
     version2size(qr_version(message, error_correction, encoding));
 
 // Returns the version of a QR code (1 <= version <= 40; version dictates the size).
 // error_correction: options: "L" (~7%), "M" (~15%), "Q" (~25%) or "H" (~30%)
 // encoding: options: "UTF-8" (Unicode) or "Shift_JIS" (Shift Japanese International Standards)
-function qr_version(message, error_correction="M", encoding="UTF-8") = 
+function qr_version(message, error_correction="M", encoding="UTF-8") =
     let(ec_lvl =
         error_correction == "L" ? EC_L :
         error_correction == "M" ? EC_M :
@@ -1779,21 +1747,21 @@ function get_version(msg_bytelen, ec_lvl, encoding) =
 // Applies one of the 7 mask patterns via XOR
 function apply_mask_pattern(val, x, y, pat) =
     pat == 0 ?
-        ((y + x) % 2 == 0 ? !val : val) : 
+        ((y + x) % 2 == 0 ? !val : val) :
     pat == 1 ?
-        (y % 2 == 0 ? !val : val) : 
+        (y % 2 == 0 ? !val : val) :
     pat == 2 ?
-        (x % 3 == 0 ? !val : val) : 
+        (x % 3 == 0 ? !val : val) :
     pat == 3 ?
-        ((y + x) % 3 == 0 ? !val : val) : 
+        ((y + x) % 3 == 0 ? !val : val) :
     pat == 4 ?
-        ((floor(y/2) + floor(x/3)) % 2 == 0 ? !val : val) : 
+        ((floor(y/2) + floor(x/3)) % 2 == 0 ? !val : val) :
     pat == 5 ?
-        (y*x % 2 + y*x % 3 == 0 ? !val : val) : 
+        (y*x % 2 + y*x % 3 == 0 ? !val : val) :
     pat == 6 ?
-        ((y*x % 2 + y*x % 3) % 2 == 0 ? !val : val) : 
+        ((y*x % 2 + y*x % 3) % 2 == 0 ? !val : val) :
     pat == 7 ?
-        ((y*x%3 + y+x) % 2 == 0 ? !val : val) : 
+        ((y*x%3 + y+x) % 2 == 0 ? !val : val) :
     undef;
 
 //

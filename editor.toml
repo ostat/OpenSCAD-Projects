@@ -3,7 +3,7 @@ name = "Ostat OpenSCAD Projects"
 uri = "https://github.com/ostat/OpenSCAD-Projects"
 export-filename-prefix = "ostat"
 mode = "multi"
-head-extra = ''
+head-extra = '<script defer src="https://um.ostat.com/script.js" data-website-id="23887f8c-fdd4-479c-90aa-b226ca6154ad"></script>'
 
 [[model]]
 file = "CncClamps_OpenSCAD/CNCClamps.scad"

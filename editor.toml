@@ -5,6 +5,10 @@ export-filename-prefix = "ostat"
 mode = "multi"
 head-extra = '<script defer src="https://um.ostat.com/script.js" data-website-id="23887f8c-fdd4-479c-90aa-b226ca6154ad"></script>'
 
+
+[[model]]
+file = "orthotic_insole/orthotic_insole.scad"
+
 [[model]]
 file = "CncClamps_OpenSCAD/CNCClamps.scad"
 
